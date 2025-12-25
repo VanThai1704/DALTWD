@@ -114,7 +114,7 @@ namespace QLNhaSach
 
         private void menuXuatExcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng xuất Excel sẽ được triển khai sau khi cài đặt thư viện EPPlus hoặc ClosedXML.", "Thông báo");
+            ShowFormAndHide(new FormBaoCao(_currentUser));
         }
 
         // ========== MENU ADMIN ==========
