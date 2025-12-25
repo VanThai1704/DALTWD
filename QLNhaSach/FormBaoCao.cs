@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
@@ -19,12 +19,26 @@ namespace QLNhaSach
             this.Load += FormBaoCao_Load;
             this.ApplyVietnameseFont();
             UITheme.ApplyTheme(this);
+            
+            // Fix cho ReportViewer trong .NET Core/.NET 8
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         private void FormBaoCao_Load(object sender, EventArgs e)
         {
             this.Text = "Bao cao va Xuat du lieu";
             LoadComboBoxLoaiBaoCao();
+            
+            // Khoi tao ReportViewer
+            try
+            {
+                reportViewer.ProcessingMode = ProcessingMode.Local;
+                reportViewer.LocalReport.DataSources.Clear();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ReportViewer init error: {ex.Message}");
+            }
         }
 
         private void LoadComboBoxLoaiBaoCao()
@@ -286,75 +300,144 @@ namespace QLNhaSach
         {
             try
             {
-                reportViewer.LocalReport.ReportPath = "Report1.rdlc";
-                reportViewer.LocalReport.DataSources.Clear();
-
-                ReportDataSource rds = new ReportDataSource("DataSet1", dataTable);
-                reportViewer.LocalReport.DataSources.Add(rds);
-
-                ReportParameter[] parameters = new ReportParameter[]
-                {
-                    new ReportParameter("TenBaoCao", tenBaoCao),
-                    new ReportParameter("NgayTao", DateTime.Now.ToString("dd/MM/yyyy HH:mm"))
-                };
-                reportViewer.LocalReport.SetParameters(parameters);
-
-                reportViewer.RefreshReport();
+                // Thay vi dung ReportViewer, hien thi du lieu trong DataGridView
+                // Vi ReportViewer can file RDLC phuc tap
+                ShowDataInGrid(dataTable, tenBaoCao);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Loi khi hien thi bao cao: {ex.Message}", "Loi",
+                MessageBox.Show($"Lỗi khi hiển thị báo cáo! {ex.Message}", "Loi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private void ShowDataInGrid(DataTable dataTable, string tenBaoCao)
+        {
+            // An ReportViewer, hien DataGridView
+            reportViewer.Visible = false;
+            
+            // Tao DataGridView de hien thi du lieu
+            if (!this.Controls.ContainsKey("dgvBaoCao"))
+            {
+                DataGridView dgvBaoCao = new DataGridView();
+                dgvBaoCao.Name = "dgvBaoCao";
+                dgvBaoCao.Dock = DockStyle.Fill;
+                dgvBaoCao.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvBaoCao.ReadOnly = true;
+                dgvBaoCao.AllowUserToAddRows = false;
+                dgvBaoCao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvBaoCao.BackgroundColor = Color.White;
+                dgvBaoCao.BorderStyle = BorderStyle.None;
+                
+                // Ap dung theme
+                UITheme.StyleDataGridView(dgvBaoCao);
+                dgvBaoCao.ApplyVietnameseFont();
+                
+                this.Controls.Add(dgvBaoCao);
+                dgvBaoCao.BringToFront();
+                panelBottom.BringToFront();
+            }
+            
+            DataGridView dgv = this.Controls["dgvBaoCao"] as DataGridView;
+            if (dgv != null)
+            {
+                dgv.DataSource = dataTable;
+                dgv.Visible = true;
+                
+                // Ap dung header tieng Viet
+                GridHelper.ApplyVietnameseColumnHeaders(dgv);
             }
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportReport("Excel");
+            ExportToExcel();
         }
 
         private void btnXuatPDF_Click(object sender, EventArgs e)
         {
-            ExportReport("PDF");
+            MessageBox.Show("Chuc nang xuat PDF se duoc trien khai sau!", "Thong bao",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnXuatWord_Click(object sender, EventArgs e)
         {
-            ExportReport("Word");
+            MessageBox.Show("Chuc nang xuat Word se duoc trien khai sau!", "Thong bao",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        private void ExportReport(string format)
+        
+        private void ExportToExcel()
         {
             try
             {
-                string mimeType, encoding, fileNameExtension;
-                string deviceInfo = "";
-                Warning[] warnings;
-                string[] streams;
-
-                string formatType = format == "Excel" ? "EXCELOPENXML" : 
-                                    format == "PDF" ? "PDF" : "WORDOPENXML";
-
-                byte[] bytes = reportViewer.LocalReport.Render(
-                    formatType,
-                    deviceInfo,
-                    out mimeType,
-                    out encoding,
-                    out fileNameExtension,
-                    out streams,
-                    out warnings);
-
+                DataGridView dgv = this.Controls["dgvBaoCao"] as DataGridView;
+                if (dgv == null || dgv.DataSource == null)
+                {
+                    MessageBox.Show("Vui long tao bao cao truoc khi xuat!", "Thong bao",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
+                DataTable dt = dgv.DataSource as DataTable;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Khong co du lieu de xuat!", "Thong bao",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
                 SaveFileDialog saveDialog = new SaveFileDialog();
-                saveDialog.Filter = format == "Excel" ? "Excel Files|*.xlsx" :
-                                   format == "PDF" ? "PDF Files|*.pdf" : "Word Files|*.docx";
-                saveDialog.FileName = $"BaoCao_{DateTime.Now:yyyyMMdd_HHmmss}";
-
+                saveDialog.Filter = "Excel Files|*.xlsx";
+                saveDialog.FileName = $"BaoCao_{cboLoaiBaoCao.Text}_{DateTime.Now:yyyyMMdd_HHmmss}";
+                
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    System.IO.File.WriteAllBytes(saveDialog.FileName, bytes);
-                    MessageBox.Show($"Xuat bao cao thanh cong!\nFile: {saveDialog.FileName}",
+                    using (var workbook = new ClosedXML.Excel.XLWorkbook())
+                    {
+                        var worksheet = workbook.Worksheets.Add("Bao cao");
+                        
+                        // Tieu de
+                        worksheet.Cell(1, 1).Value = cboLoaiBaoCao.Text.ToUpper();
+                        worksheet.Cell(1, 1).Style.Font.Bold = true;
+                        worksheet.Cell(1, 1).Style.Font.FontSize = 16;
+                        worksheet.Range(1, 1, 1, dt.Columns.Count).Merge();
+                        worksheet.Range(1, 1, 1, dt.Columns.Count).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+                        
+                        // Ngay tao
+                        worksheet.Cell(2, 1).Value = $"Ngay tao: {DateTime.Now:dd/MM/yyyy HH:mm}";
+                        worksheet.Range(2, 1, 2, dt.Columns.Count).Merge();
+                        
+                        // Headers
+                        int startRow = 4;
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            var cell = worksheet.Cell(startRow, i + 1);
+                            cell.Value = dgv.Columns[i].HeaderText;
+                            cell.Style.Font.Bold = true;
+                            cell.Style.Fill.BackgroundColor = ClosedXML.Excel.XLColor.LightBlue;
+                            cell.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                        }
+                        
+                        // Data
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dt.Columns.Count; j++)
+                            {
+                                var cell = worksheet.Cell(startRow + 1 + i, j + 1);
+                                cell.Value = dt.Rows[i][j]?.ToString() ?? "";
+                                cell.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                            }
+                        }
+                        
+                        // Auto-fit columns
+                        worksheet.Columns().AdjustToContents();
+                        
+                        workbook.SaveAs(saveDialog.FileName);
+                    }
+                    
+                    MessageBox.Show($"Xuat Excel thanh cong!\nFile: {saveDialog.FileName}",
                         "Thanh cong", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    
                     if (MessageBox.Show("Ban co muon mo file vua xuat?", "Xac nhan",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -368,7 +451,7 @@ namespace QLNhaSach
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Loi khi xuat bao cao: {ex.Message}", "Loi",
+                MessageBox.Show($"Loi khi xuat Excel: {ex.Message}", "Loi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
