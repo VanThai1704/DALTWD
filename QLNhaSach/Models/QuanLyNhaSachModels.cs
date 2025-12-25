@@ -112,8 +112,8 @@ namespace QLNhaSach.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Thay ??i chu?i k?t n?i cho phù h?p v?i máy c?a b?n
-            optionsBuilder.UseSqlServer("Server=.;Database=QuanLyNhaSach;Trusted_Connection=True;TrustServerCertificate=True;");
+            // Connection string cho SQL Server LAPTOP-OVMVKSDU
+            optionsBuilder.UseSqlServer("Server=LAPTOP-OVMVKSDU;Database=QuanLyNhaSach;Trusted_Connection=True;TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
