@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {
@@ -16,6 +15,7 @@ namespace QLNhaSach
             _id = id;
             InitializeComponent();
             this.ApplyVietnameseFont();
+            UITheme.ApplyTheme(this);
             LoadRoles();
             if (_id.HasValue) LoadData();
             this.btnOK.Click += BtnOK_Click;
@@ -64,8 +64,8 @@ namespace QLNhaSach
             {
                 using var db = new QuanLyNhaSachContext();
                 var n = db.NguoiDungs
-                    .Include(u => u.NguoiDungRoles)
-                    .ThenInclude(nr => nr.Role)
+                    .Include("NguoiDungRoles")
+                    .Include("NguoiDungRoles.Role")
                     .FirstOrDefault(u => u.NguoiDungId == _id.Value);
                     
                 if (n == null) return;
@@ -172,7 +172,7 @@ namespace QLNhaSach
                 else
                 {
                     var n = db.NguoiDungs
-                        .Include(u => u.NguoiDungRoles)
+                        .Include("NguoiDungRoles")
                         .FirstOrDefault(u => u.NguoiDungId == _id.Value);
                         
                     if (n != null)

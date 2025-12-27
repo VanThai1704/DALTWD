@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormRole
     {
@@ -49,28 +52,31 @@
             // menuThem
             // 
             menuThem.Font = new Font("Tahoma", 9F);
+            menuThem.Image = null;
             menuThem.Name = "menuThem";
             menuThem.ShortcutKeys = Keys.Control | Keys.N;
             menuThem.Size = new Size(224, 26);
-            menuThem.Text = "Thêm";
+            menuThem.Text = "[+] Thêm";
             menuThem.Click += menuThem_Click;
             // 
             // menuSua
             // 
             menuSua.Font = new Font("Tahoma", 9F);
+            menuSua.Image = null;
             menuSua.Name = "menuSua";
             menuSua.ShortcutKeys = Keys.Control | Keys.E;
             menuSua.Size = new Size(224, 26);
-            menuSua.Text = "Sửa";
+            menuSua.Text = "[~] Sửa";
             menuSua.Click += menuSua_Click;
             // 
             // menuXoa
             // 
             menuXoa.Font = new Font("Tahoma", 9F);
+            menuXoa.Image = null;
             menuXoa.Name = "menuXoa";
             menuXoa.ShortcutKeys = Keys.Delete;
             menuXoa.Size = new Size(224, 26);
-            menuXoa.Text = "Xóa";
+            menuXoa.Text = "[-] Xóa";
             menuXoa.Click += menuXoa_Click;
             // 
             // toolStripSeparator1

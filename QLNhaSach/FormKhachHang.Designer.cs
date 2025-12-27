@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormKhachHang
     {

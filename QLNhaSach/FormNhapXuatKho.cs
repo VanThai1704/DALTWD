@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 
 namespace QLNhaSach
@@ -119,7 +119,6 @@ namespace QLNhaSach
                                  TonKhoHienTai = s != null ? s.SoLuongTon : (int?)0
                              })
                              .Take(100)
-                             .AsNoTracking()
                              .ToList();
 
                 dataGridView1.DataSource = lichSu;
@@ -170,7 +169,7 @@ namespace QLNhaSach
                 var ghiChu = txtGhiChu.Text.Trim();
 
                 // Gọi stored procedure sp_NhapKho
-                var connectionString = db.Database.GetConnectionString();
+                var connectionString = db.Database.Connection.ConnectionString;
                 using var connection = new SqlConnection(connectionString);
                 using var command = new SqlCommand("sp_NhapKho", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -230,7 +229,7 @@ namespace QLNhaSach
                 var ghiChu = txtGhiChu.Text.Trim();
 
                 // Gọi stored procedure sp_XuatKho
-                var connectionString = db.Database.GetConnectionString();
+                var connectionString = db.Database.Connection.ConnectionString;
                 using var connection = new SqlConnection(connectionString);
                 using var command = new SqlCommand("sp_XuatKho", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;

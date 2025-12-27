@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {
@@ -15,6 +14,7 @@ namespace QLNhaSach
             _id = id;
             InitializeComponent();
             this.ApplyVietnameseFont();
+            UITheme.ApplyTheme(this);
             LoadLookups();
             if (!string.IsNullOrEmpty(_id)) LoadData();
             this.btnOK.Click += BtnOK_Click;

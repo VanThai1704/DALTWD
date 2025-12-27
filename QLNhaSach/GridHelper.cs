@@ -90,6 +90,8 @@ namespace QLNhaSach
             Set("SoLuongNguoiDung", "Số người dùng");
             Set("MoTa", "Mô tả");
             Set("TonKHoHienTai", "Tồn kho hiện tại");
+            Set("TheLoai", "Thể loại");
+            Set("NhaXuatBan", "Nhà xuất bản");
 
             // Formatting for known columns
             if (dgv.Columns.Contains("GiaBan"))

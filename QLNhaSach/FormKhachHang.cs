@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {

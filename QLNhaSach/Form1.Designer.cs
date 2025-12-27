@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class Form1
     {
@@ -28,354 +31,397 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
-            menuChucNang = new ToolStripMenuItem();
-            menuQuanLySach = new ToolStripMenuItem();
-            menuKhachHang = new ToolStripMenuItem();
-            menuDonHang = new ToolStripMenuItem();
-            menuThongKe = new ToolStripMenuItem();
-            menuBaoCaoTonKho = new ToolStripMenuItem();
-            menuNhapXuatKho = new ToolStripMenuItem();
-            menuXuatExcel = new ToolStripMenuItem();
-            toolStripSeparatorAdmin = new ToolStripSeparator();
-            menuAdminQuanLyNguoiDung = new ToolStripMenuItem();
-            menuAdminQuanLyRole = new ToolStripMenuItem();
-            menuAdminSaoLuuDuLieu = new ToolStripMenuItem();
-            menuAdminPhucHoiDuLieu = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            menuAdminCauHinhHeThong = new ToolStripMenuItem();
-            menuAdminXemNhatKy = new ToolStripMenuItem();
-            panelWelcome = new Panel();
-            lblWelcome = new Label();
-            lblSystemInfo = new Label();
-            panelQuickAccess = new Panel();
-            lblQuickAccess = new Label();
-            btnQuanLySach = new Button();
-            btnKhachHang = new Button();
-            btnDonHang = new Button();
-            btnThongKe = new Button();
-            btnBaoCaoTonKho = new Button();
-            btnNhapXuatKho = new Button();
-            menuStrip1.SuspendLayout();
-            panelWelcome.SuspendLayout();
-            panelQuickAccess.SuspendLayout();
-            SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuChucNang = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuQuanLySach = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDonHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuThongKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBaoCaoTonKho = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuNhapXuatKho = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuXuatExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparatorAdmin = new System.Windows.Forms.ToolStripSeparator();
+            this.menuAdminQuanLyNguoiDung = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdminQuanLyRole = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdminSaoLuuDuLieu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdminPhucHoiDuLieu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuAdminCauHinhHeThong = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdminXemNhatKy = new System.Windows.Forms.ToolStripMenuItem();
+            this.xuấtBáoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelWelcome = new System.Windows.Forms.Panel();
+            this.lblSystemInfo = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.panelQuickAccess = new System.Windows.Forms.Panel();
+            this.lblQuickAccess = new System.Windows.Forms.Label();
+            this.btnQuanLySach = new System.Windows.Forms.Button();
+            this.btnKhachHang = new System.Windows.Forms.Button();
+            this.btnDonHang = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
+            this.btnBaoCaoTonKho = new System.Windows.Forms.Button();
+            this.btnNhapXuatKho = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
+            this.panelWelcome.SuspendLayout();
+            this.panelQuickAccess.SuspendLayout();
+            this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.FromArgb(41, 128, 185);
-            menuStrip1.Font = new Font("Segoe UI", 10F);
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuChucNang });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(8, 4, 0, 4);
-            menuStrip1.Size = new Size(1200, 31);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuChucNang});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 4, 0, 4);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 35);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // menuChucNang
             // 
-            menuChucNang.DropDownItems.AddRange(new ToolStripItem[] { menuQuanLySach, menuKhachHang, menuDonHang, menuThongKe, menuBaoCaoTonKho, menuNhapXuatKho, menuXuatExcel, toolStripSeparatorAdmin, menuAdminQuanLyNguoiDung, menuAdminQuanLyRole, menuAdminSaoLuuDuLieu, menuAdminPhucHoiDuLieu, toolStripSeparator1, menuAdminCauHinhHeThong, menuAdminXemNhatKy });
-            menuChucNang.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuChucNang.ForeColor = Color.White;
-            menuChucNang.Name = "menuChucNang";
-            menuChucNang.Padding = new Padding(10, 0, 10, 0);
-            menuChucNang.Size = new Size(107, 23);
-            menuChucNang.Text = "☰ Chức năng";
+            this.menuChucNang.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuQuanLySach,
+            this.menuKhachHang,
+            this.menuDonHang,
+            this.menuThongKe,
+            this.menuBaoCaoTonKho,
+            this.menuNhapXuatKho,
+            this.menuXuatExcel,
+            this.toolStripSeparatorAdmin,
+            this.menuAdminQuanLyNguoiDung,
+            this.menuAdminQuanLyRole,
+            this.menuAdminSaoLuuDuLieu,
+            this.menuAdminPhucHoiDuLieu,
+            this.toolStripSeparator1,
+            this.menuAdminCauHinhHeThong,
+            this.menuAdminXemNhatKy,
+            this.xuấtBáoCáoToolStripMenuItem});
+            this.menuChucNang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuChucNang.ForeColor = System.Drawing.Color.White;
+            this.menuChucNang.Name = "menuChucNang";
+            this.menuChucNang.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.menuChucNang.Size = new System.Drawing.Size(140, 27);
+            this.menuChucNang.Text = "☰ Chức năng";
             // 
             // menuQuanLySach
             // 
-            menuQuanLySach.Font = new Font("Segoe UI", 10F);
-            menuQuanLySach.Name = "menuQuanLySach";
-            menuQuanLySach.Size = new Size(260, 26);
-            menuQuanLySach.Text = "📖 Danh sách sách";
-            menuQuanLySach.Click += menuQuanLySach_Click;
+            this.menuQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuQuanLySach.Name = "menuQuanLySach";
+            this.menuQuanLySach.Size = new System.Drawing.Size(296, 28);
+            this.menuQuanLySach.Text = "📖 Danh sách sách";
+            this.menuQuanLySach.Click += new System.EventHandler(this.menuQuanLySach_Click);
             // 
             // menuKhachHang
             // 
-            menuKhachHang.Font = new Font("Segoe UI", 10F);
-            menuKhachHang.Name = "menuKhachHang";
-            menuKhachHang.Size = new Size(260, 26);
-            menuKhachHang.Text = "👥 Danh sách khách hàng";
-            menuKhachHang.Click += menuKhachHang_Click;
+            this.menuKhachHang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuKhachHang.Name = "menuKhachHang";
+            this.menuKhachHang.Size = new System.Drawing.Size(296, 28);
+            this.menuKhachHang.Text = "👥 Danh sách khách hàng";
+            this.menuKhachHang.Click += new System.EventHandler(this.menuKhachHang_Click);
             // 
             // menuDonHang
             // 
-            menuDonHang.Font = new Font("Segoe UI", 10F);
-            menuDonHang.Name = "menuDonHang";
-            menuDonHang.Size = new Size(260, 26);
-            menuDonHang.Text = "📝 Danh sách đơn hàng";
-            menuDonHang.Click += menuDonHang_Click;
+            this.menuDonHang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuDonHang.Name = "menuDonHang";
+            this.menuDonHang.Size = new System.Drawing.Size(296, 28);
+            this.menuDonHang.Text = "📝 Danh sách đơn hàng";
+            this.menuDonHang.Click += new System.EventHandler(this.menuDonHang_Click);
             // 
             // menuThongKe
             // 
-            menuThongKe.Font = new Font("Segoe UI", 10F);
-            menuThongKe.Name = "menuThongKe";
-            menuThongKe.Size = new Size(260, 26);
-            menuThongKe.Text = "📊 Thống kê báo cáo";
-            menuThongKe.Click += menuThongKe_Click;
+            this.menuThongKe.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuThongKe.Name = "menuThongKe";
+            this.menuThongKe.Size = new System.Drawing.Size(296, 28);
+            this.menuThongKe.Text = "📊 Thống kê báo cáo";
+            this.menuThongKe.Click += new System.EventHandler(this.menuThongKe_Click);
             // 
             // menuBaoCaoTonKho
             // 
-            menuBaoCaoTonKho.Font = new Font("Segoe UI", 10F);
-            menuBaoCaoTonKho.Name = "menuBaoCaoTonKho";
-            menuBaoCaoTonKho.Size = new Size(260, 26);
-            menuBaoCaoTonKho.Text = "📦 Báo cáo tồn kho";
-            menuBaoCaoTonKho.Click += menuBaoCaoTonKho_Click;
+            this.menuBaoCaoTonKho.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuBaoCaoTonKho.Name = "menuBaoCaoTonKho";
+            this.menuBaoCaoTonKho.Size = new System.Drawing.Size(296, 28);
+            this.menuBaoCaoTonKho.Text = "📦 Báo cáo tồn kho";
+            this.menuBaoCaoTonKho.Click += new System.EventHandler(this.menuBaoCaoTonKho_Click);
             // 
             // menuNhapXuatKho
             // 
-            menuNhapXuatKho.Font = new Font("Segoe UI", 10F);
-            menuNhapXuatKho.Name = "menuNhapXuatKho";
-            menuNhapXuatKho.Size = new Size(260, 26);
-            menuNhapXuatKho.Text = "🛒 Nhập xuất kho";
-            menuNhapXuatKho.Click += menuNhapXuatKho_Click;
+            this.menuNhapXuatKho.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuNhapXuatKho.Name = "menuNhapXuatKho";
+            this.menuNhapXuatKho.Size = new System.Drawing.Size(296, 28);
+            this.menuNhapXuatKho.Text = "🛒 Nhập xuất kho";
+            this.menuNhapXuatKho.Click += new System.EventHandler(this.menuNhapXuatKho_Click);
             // 
             // menuXuatExcel
             // 
-            menuXuatExcel.Font = new Font("Segoe UI", 10F);
-            menuXuatExcel.Name = "menuXuatExcel";
-            menuXuatExcel.Size = new Size(260, 26);
-            menuXuatExcel.Text = "📄 Xuất Excel";
-            menuXuatExcel.Click += menuXuatExcel_Click;
+            this.menuXuatExcel.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.menuXuatExcel.Name = "menuXuatExcel";
+            this.menuXuatExcel.Size = new System.Drawing.Size(296, 28);
+            this.menuXuatExcel.Text = "📄 Xuất báo cáo";
+            this.menuXuatExcel.Click += new System.EventHandler(this.menuXuatExcel_Click);
             // 
             // toolStripSeparatorAdmin
             // 
-            toolStripSeparatorAdmin.Name = "toolStripSeparatorAdmin";
-            toolStripSeparatorAdmin.Size = new Size(257, 6);
+            this.toolStripSeparatorAdmin.Name = "toolStripSeparatorAdmin";
+            this.toolStripSeparatorAdmin.Size = new System.Drawing.Size(293, 6);
             // 
             // menuAdminQuanLyNguoiDung
             // 
-            menuAdminQuanLyNguoiDung.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminQuanLyNguoiDung.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminQuanLyNguoiDung.Name = "menuAdminQuanLyNguoiDung";
-            menuAdminQuanLyNguoiDung.Size = new Size(260, 26);
-            menuAdminQuanLyNguoiDung.Text = "👤 Quản lý người dùng";
-            menuAdminQuanLyNguoiDung.Visible = false;
-            menuAdminQuanLyNguoiDung.Click += menuAdminQuanLyNguoiDung_Click;
+            this.menuAdminQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminQuanLyNguoiDung.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminQuanLyNguoiDung.Name = "menuAdminQuanLyNguoiDung";
+            this.menuAdminQuanLyNguoiDung.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminQuanLyNguoiDung.Text = "👤 Quản lý người dùng";
+            this.menuAdminQuanLyNguoiDung.Visible = false;
+            this.menuAdminQuanLyNguoiDung.Click += new System.EventHandler(this.menuAdminQuanLyNguoiDung_Click);
             // 
             // menuAdminQuanLyRole
             // 
-            menuAdminQuanLyRole.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminQuanLyRole.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminQuanLyRole.Name = "menuAdminQuanLyRole";
-            menuAdminQuanLyRole.Size = new Size(260, 26);
-            menuAdminQuanLyRole.Text = "🔑 Quản lý vai trò";
-            menuAdminQuanLyRole.Visible = false;
-            menuAdminQuanLyRole.Click += menuAdminQuanLyRole_Click;
+            this.menuAdminQuanLyRole.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminQuanLyRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminQuanLyRole.Name = "menuAdminQuanLyRole";
+            this.menuAdminQuanLyRole.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminQuanLyRole.Text = "🔑 Quản lý vai trò";
+            this.menuAdminQuanLyRole.Visible = false;
+            this.menuAdminQuanLyRole.Click += new System.EventHandler(this.menuAdminQuanLyRole_Click);
             // 
             // menuAdminSaoLuuDuLieu
             // 
-            menuAdminSaoLuuDuLieu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminSaoLuuDuLieu.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminSaoLuuDuLieu.Name = "menuAdminSaoLuuDuLieu";
-            menuAdminSaoLuuDuLieu.Size = new Size(260, 26);
-            menuAdminSaoLuuDuLieu.Text = "💾 Sao lưu dữ liệu";
-            menuAdminSaoLuuDuLieu.Visible = false;
-            menuAdminSaoLuuDuLieu.Click += menuAdminSaoLuuDuLieu_Click;
+            this.menuAdminSaoLuuDuLieu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminSaoLuuDuLieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminSaoLuuDuLieu.Name = "menuAdminSaoLuuDuLieu";
+            this.menuAdminSaoLuuDuLieu.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminSaoLuuDuLieu.Text = "💾 Sao lưu dữ liệu";
+            this.menuAdminSaoLuuDuLieu.Visible = false;
+            this.menuAdminSaoLuuDuLieu.Click += new System.EventHandler(this.menuAdminSaoLuuDuLieu_Click);
             // 
             // menuAdminPhucHoiDuLieu
             // 
-            menuAdminPhucHoiDuLieu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminPhucHoiDuLieu.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminPhucHoiDuLieu.Name = "menuAdminPhucHoiDuLieu";
-            menuAdminPhucHoiDuLieu.Size = new Size(260, 26);
-            menuAdminPhucHoiDuLieu.Text = "♻ Phục hồi dữ liệu";
-            menuAdminPhucHoiDuLieu.Visible = false;
-            menuAdminPhucHoiDuLieu.Click += menuAdminPhucHoiDuLieu_Click;
+            this.menuAdminPhucHoiDuLieu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminPhucHoiDuLieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminPhucHoiDuLieu.Name = "menuAdminPhucHoiDuLieu";
+            this.menuAdminPhucHoiDuLieu.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminPhucHoiDuLieu.Text = "♻ Phục hồi dữ liệu";
+            this.menuAdminPhucHoiDuLieu.Visible = false;
+            this.menuAdminPhucHoiDuLieu.Click += new System.EventHandler(this.menuAdminPhucHoiDuLieu_Click);
             // 
             // toolStripSeparator1
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(257, 6);
-            toolStripSeparator1.Visible = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(293, 6);
+            this.toolStripSeparator1.Visible = false;
             // 
             // menuAdminCauHinhHeThong
             // 
-            menuAdminCauHinhHeThong.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminCauHinhHeThong.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminCauHinhHeThong.Name = "menuAdminCauHinhHeThong";
-            menuAdminCauHinhHeThong.Size = new Size(260, 26);
-            menuAdminCauHinhHeThong.Text = "⚙ Cấu hình hệ thống";
-            menuAdminCauHinhHeThong.Visible = false;
-            menuAdminCauHinhHeThong.Click += menuAdminCauHinhHeThong_Click;
+            this.menuAdminCauHinhHeThong.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminCauHinhHeThong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminCauHinhHeThong.Name = "menuAdminCauHinhHeThong";
+            this.menuAdminCauHinhHeThong.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminCauHinhHeThong.Text = "⚙ Cấu hình hệ thống";
+            this.menuAdminCauHinhHeThong.Visible = false;
+            this.menuAdminCauHinhHeThong.Click += new System.EventHandler(this.menuAdminCauHinhHeThong_Click);
             // 
             // menuAdminXemNhatKy
             // 
-            menuAdminXemNhatKy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuAdminXemNhatKy.ForeColor = Color.FromArgb(231, 76, 60);
-            menuAdminXemNhatKy.Name = "menuAdminXemNhatKy";
-            menuAdminXemNhatKy.Size = new Size(260, 26);
-            menuAdminXemNhatKy.Text = "📋 Nhật ký hoạt động ";
-            menuAdminXemNhatKy.Visible = false;
-            menuAdminXemNhatKy.Click += menuAdminXemNhatKy_Click;
+            this.menuAdminXemNhatKy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuAdminXemNhatKy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.menuAdminXemNhatKy.Name = "menuAdminXemNhatKy";
+            this.menuAdminXemNhatKy.Size = new System.Drawing.Size(296, 28);
+            this.menuAdminXemNhatKy.Text = "📋 Nhật ký hoạt động ";
+            this.menuAdminXemNhatKy.Visible = false;
+            this.menuAdminXemNhatKy.Click += new System.EventHandler(this.menuAdminXemNhatKy_Click);
+            // 
+            // xuấtBáoCáoToolStripMenuItem
+            // 
+            this.xuấtBáoCáoToolStripMenuItem.Name = "xuấtBáoCáoToolStripMenuItem";
+            this.xuấtBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
+            this.xuấtBáoCáoToolStripMenuItem.Text = "📄 Xuất Báo Cáo";
             // 
             // panelWelcome
             // 
-            panelWelcome.BackColor = Color.White;
-            panelWelcome.Controls.Add(lblSystemInfo);
-            panelWelcome.Controls.Add(lblWelcome);
-            panelWelcome.Location = new Point(50, 80);
-            panelWelcome.Name = "panelWelcome";
-            panelWelcome.Size = new Size(700, 150);
-            panelWelcome.TabIndex = 1;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblWelcome.ForeColor = Color.FromArgb(41, 128, 185);
-            lblWelcome.Location = new Point(30, 20);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(500, 45);
-            lblWelcome.TabIndex = 0;
-            lblWelcome.Text = "Chào mừng đến với hệ thống quản lý nhà sách";
+            this.panelWelcome.BackColor = System.Drawing.Color.White;
+            this.panelWelcome.Controls.Add(this.lblSystemInfo);
+            this.panelWelcome.Controls.Add(this.lblWelcome);
+            this.panelWelcome.Location = new System.Drawing.Point(50, 80);
+            this.panelWelcome.Name = "panelWelcome";
+            this.panelWelcome.Size = new System.Drawing.Size(700, 169);
+            this.panelWelcome.TabIndex = 1;
             // 
             // lblSystemInfo
             // 
-            lblSystemInfo.AutoSize = true;
-            lblSystemInfo.Font = new Font("Segoe UI", 11F);
-            lblSystemInfo.ForeColor = Color.FromArgb(127, 140, 141);
-            lblSystemInfo.Location = new Point(30, 80);
-            lblSystemInfo.Name = "lblSystemInfo";
-            lblSystemInfo.Size = new Size(400, 60);
-            lblSystemInfo.TabIndex = 1;
-            lblSystemInfo.Text = "Hệ thống quản lý bán sách chuyên nghiệp\nQuản lý sách, khách hàng, đơn hàng và báo cáo thống kê\nPhiên bản 1.0.0";
+            this.lblSystemInfo.AutoSize = true;
+            this.lblSystemInfo.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblSystemInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.lblSystemInfo.Location = new System.Drawing.Point(30, 80);
+            this.lblSystemInfo.Name = "lblSystemInfo";
+            this.lblSystemInfo.Size = new System.Drawing.Size(492, 75);
+            this.lblSystemInfo.TabIndex = 1;
+            this.lblSystemInfo.Text = "Hệ thống quản lý bán sách chuyên nghiệp\nQuản lý sách, khách hàng, đơn hàng và báo" +
+    " cáo thống kê\nPhiên bản 1.0.0";
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.lblWelcome.Location = new System.Drawing.Point(30, 20);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(899, 54);
+            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = "Chào mừng đến với hệ thống quản lý nhà sách";
             // 
             // panelQuickAccess
             // 
-            panelQuickAccess.BackColor = Color.White;
-            panelQuickAccess.Controls.Add(lblQuickAccess);
-            panelQuickAccess.Controls.Add(btnQuanLySach);
-            panelQuickAccess.Controls.Add(btnKhachHang);
-            panelQuickAccess.Controls.Add(btnDonHang);
-            panelQuickAccess.Controls.Add(btnThongKe);
-            panelQuickAccess.Controls.Add(btnBaoCaoTonKho);
-            panelQuickAccess.Controls.Add(btnNhapXuatKho);
-            panelQuickAccess.Location = new Point(50, 260);
-            panelQuickAccess.Name = "panelQuickAccess";
-            panelQuickAccess.Size = new Size(700, 300);
-            panelQuickAccess.TabIndex = 2;
+            this.panelQuickAccess.BackColor = System.Drawing.Color.White;
+            this.panelQuickAccess.Controls.Add(this.lblQuickAccess);
+            this.panelQuickAccess.Controls.Add(this.btnQuanLySach);
+            this.panelQuickAccess.Controls.Add(this.btnKhachHang);
+            this.panelQuickAccess.Controls.Add(this.btnDonHang);
+            this.panelQuickAccess.Controls.Add(this.btnThongKe);
+            this.panelQuickAccess.Controls.Add(this.btnBaoCaoTonKho);
+            this.panelQuickAccess.Controls.Add(this.btnNhapXuatKho);
+            this.panelQuickAccess.Location = new System.Drawing.Point(50, 277);
+            this.panelQuickAccess.Name = "panelQuickAccess";
+            this.panelQuickAccess.Size = new System.Drawing.Size(700, 283);
+            this.panelQuickAccess.TabIndex = 2;
             // 
             // lblQuickAccess
             // 
-            lblQuickAccess.AutoSize = true;
-            lblQuickAccess.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblQuickAccess.ForeColor = Color.FromArgb(52, 73, 94);
-            lblQuickAccess.Location = new Point(30, 20);
-            lblQuickAccess.Name = "lblQuickAccess";
-            lblQuickAccess.Size = new Size(150, 25);
-            lblQuickAccess.TabIndex = 0;
-            lblQuickAccess.Text = "Truy cập nhanh";
+            this.lblQuickAccess.AutoSize = true;
+            this.lblQuickAccess.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblQuickAccess.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.lblQuickAccess.Location = new System.Drawing.Point(30, 20);
+            this.lblQuickAccess.Name = "lblQuickAccess";
+            this.lblQuickAccess.Size = new System.Drawing.Size(189, 32);
+            this.lblQuickAccess.TabIndex = 0;
+            this.lblQuickAccess.Text = "Truy cập nhanh";
             // 
             // btnQuanLySach
             // 
-            btnQuanLySach.BackColor = Color.FromArgb(52, 152, 219);
-            btnQuanLySach.FlatStyle = FlatStyle.Flat;
-            btnQuanLySach.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnQuanLySach.ForeColor = Color.White;
-            btnQuanLySach.Location = new Point(30, 70);
-            btnQuanLySach.Name = "btnQuanLySach";
-            btnQuanLySach.Size = new Size(200, 60);
-            btnQuanLySach.TabIndex = 1;
-            btnQuanLySach.Text = "📖 Danh sách sách";
-            btnQuanLySach.UseVisualStyleBackColor = false;
-            btnQuanLySach.Click += menuQuanLySach_Click;
+            this.btnQuanLySach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnQuanLySach.FlatAppearance.BorderSize = 0;
+            this.btnQuanLySach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnQuanLySach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
+            this.btnQuanLySach.Location = new System.Drawing.Point(30, 70);
+            this.btnQuanLySach.Name = "btnQuanLySach";
+            this.btnQuanLySach.Size = new System.Drawing.Size(200, 60);
+            this.btnQuanLySach.TabIndex = 1;
+            this.btnQuanLySach.Text = "Quản lý sách";
+            this.btnQuanLySach.UseVisualStyleBackColor = false;
+            this.btnQuanLySach.Click += new System.EventHandler(this.btnQuanLySach_Click);
             // 
             // btnKhachHang
             // 
-            btnKhachHang.BackColor = Color.FromArgb(46, 204, 113);
-            btnKhachHang.FlatStyle = FlatStyle.Flat;
-            btnKhachHang.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnKhachHang.ForeColor = Color.White;
-            btnKhachHang.Location = new Point(250, 70);
-            btnKhachHang.Name = "btnKhachHang";
-            btnKhachHang.Size = new Size(200, 60);
-            btnKhachHang.TabIndex = 2;
-            btnKhachHang.Text = "👥 Khách hàng";
-            btnKhachHang.UseVisualStyleBackColor = false;
-            btnKhachHang.Click += menuKhachHang_Click;
+            this.btnKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnKhachHang.FlatAppearance.BorderSize = 0;
+            this.btnKhachHang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnKhachHang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))), ((int)(((byte)(220)))));
+            this.btnKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhachHang.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnKhachHang.Location = new System.Drawing.Point(250, 70);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(200, 60);
+            this.btnKhachHang.TabIndex = 2;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.UseVisualStyleBackColor = false;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
             // 
             // btnDonHang
             // 
-            btnDonHang.BackColor = Color.FromArgb(155, 89, 182);
-            btnDonHang.FlatStyle = FlatStyle.Flat;
-            btnDonHang.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnDonHang.ForeColor = Color.White;
-            btnDonHang.Location = new Point(470, 70);
-            btnDonHang.Name = "btnDonHang";
-            btnDonHang.Size = new Size(200, 60);
-            btnDonHang.TabIndex = 3;
-            btnDonHang.Text = "📝 Đơn hàng";
-            btnDonHang.UseVisualStyleBackColor = false;
-            btnDonHang.Click += menuDonHang_Click;
+            this.btnDonHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.btnDonHang.FlatAppearance.BorderSize = 0;
+            this.btnDonHang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.btnDonHang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))), ((int)(((byte)(220)))));
+            this.btnDonHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDonHang.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnDonHang.ForeColor = System.Drawing.Color.White;
+            this.btnDonHang.Location = new System.Drawing.Point(470, 70);
+            this.btnDonHang.Name = "btnDonHang";
+            this.btnDonHang.Size = new System.Drawing.Size(200, 60);
+            this.btnDonHang.TabIndex = 3;
+            this.btnDonHang.Text = "Đơn hàng";
+            this.btnDonHang.UseVisualStyleBackColor = false;
+            this.btnDonHang.Click += new System.EventHandler(this.btnDonHang_Click);
             // 
             // btnThongKe
             // 
-            btnThongKe.BackColor = Color.FromArgb(230, 126, 34);
-            btnThongKe.FlatStyle = FlatStyle.Flat;
-            btnThongKe.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnThongKe.ForeColor = Color.White;
-            btnThongKe.Location = new Point(30, 150);
-            btnThongKe.Name = "btnThongKe";
-            btnThongKe.Size = new Size(200, 60);
-            btnThongKe.TabIndex = 4;
-            btnThongKe.Text = "📊 Thống kê báo cáo";
-            btnThongKe.UseVisualStyleBackColor = false;
-            btnThongKe.Click += menuThongKe_Click;
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.btnThongKe.FlatAppearance.BorderSize = 0;
+            this.btnThongKe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(18)))));
+            this.btnThongKe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))), ((int)(((byte)(220)))));
+            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnThongKe.ForeColor = System.Drawing.Color.White;
+            this.btnThongKe.Location = new System.Drawing.Point(30, 150);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(200, 60);
+            this.btnThongKe.TabIndex = 4;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnBaoCaoTonKho
             // 
-            btnBaoCaoTonKho.BackColor = Color.FromArgb(231, 76, 60);
-            btnBaoCaoTonKho.FlatStyle = FlatStyle.Flat;
-            btnBaoCaoTonKho.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnBaoCaoTonKho.ForeColor = Color.White;
-            btnBaoCaoTonKho.Location = new Point(250, 150);
-            btnBaoCaoTonKho.Name = "btnBaoCaoTonKho";
-            btnBaoCaoTonKho.Size = new Size(200, 60);
-            btnBaoCaoTonKho.TabIndex = 5;
-            btnBaoCaoTonKho.Text = "📦 Báo cáo tồn kho";
-            btnBaoCaoTonKho.UseVisualStyleBackColor = false;
-            btnBaoCaoTonKho.Click += menuBaoCaoTonKho_Click;
+            this.btnBaoCaoTonKho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnBaoCaoTonKho.FlatAppearance.BorderSize = 0;
+            this.btnBaoCaoTonKho.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnBaoCaoTonKho.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))), ((int)(((byte)(220)))));
+            this.btnBaoCaoTonKho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoCaoTonKho.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnBaoCaoTonKho.ForeColor = System.Drawing.Color.White;
+            this.btnBaoCaoTonKho.Location = new System.Drawing.Point(250, 150);
+            this.btnBaoCaoTonKho.Name = "btnBaoCaoTonKho";
+            this.btnBaoCaoTonKho.Size = new System.Drawing.Size(200, 60);
+            this.btnBaoCaoTonKho.TabIndex = 5;
+            this.btnBaoCaoTonKho.Text = "Báo cáo tồn kho";
+            this.btnBaoCaoTonKho.UseVisualStyleBackColor = false;
+            this.btnBaoCaoTonKho.Click += new System.EventHandler(this.btnBaoCaoTonKho_Click);
             // 
             // btnNhapXuatKho
             // 
-            btnNhapXuatKho.BackColor = Color.FromArgb(52, 73, 94);
-            btnNhapXuatKho.FlatStyle = FlatStyle.Flat;
-            btnNhapXuatKho.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnNhapXuatKho.ForeColor = Color.White;
-            btnNhapXuatKho.Location = new Point(470, 150);
-            btnNhapXuatKho.Name = "btnNhapXuatKho";
-            btnNhapXuatKho.Size = new Size(200, 60);
-            btnNhapXuatKho.TabIndex = 6;
-            btnNhapXuatKho.Text = "🛒 Nhập xuất kho";
-            btnNhapXuatKho.UseVisualStyleBackColor = false;
-            btnNhapXuatKho.Click += menuNhapXuatKho_Click;
+            this.btnNhapXuatKho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnNhapXuatKho.FlatAppearance.BorderSize = 0;
+            this.btnNhapXuatKho.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnNhapXuatKho.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))), ((int)(((byte)(220)))));
+            this.btnNhapXuatKho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhapXuatKho.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnNhapXuatKho.ForeColor = System.Drawing.Color.White;
+            this.btnNhapXuatKho.Location = new System.Drawing.Point(470, 150);
+            this.btnNhapXuatKho.Name = "btnNhapXuatKho";
+            this.btnNhapXuatKho.Size = new System.Drawing.Size(200, 60);
+            this.btnNhapXuatKho.TabIndex = 6;
+            this.btnNhapXuatKho.Text = "Nhập xuất kho";
+            this.btnNhapXuatKho.UseVisualStyleBackColor = false;
+            this.btnNhapXuatKho.Click += new System.EventHandler(this.btnNhapXuatKho_Click);
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(236, 240, 241);
-            ClientSize = new Size(800, 600);
-            Controls.Add(panelQuickAccess);
-            Controls.Add(panelWelcome);
-            Controls.Add(menuStrip1);
-            Font = new Font("Segoe UI", 10F);
-            MainMenuStrip = menuStrip1;
-            Name = "Form1";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Hệ thống quản lý nhà sách";
-            Load += Form1_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
-            panelWelcome.ResumeLayout(false);
-            panelWelcome.PerformLayout();
-            panelQuickAccess.ResumeLayout(false);
-            panelQuickAccess.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.panelQuickAccess);
+            this.Controls.Add(this.panelWelcome);
+            this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Hệ thống quản lý nhà sách";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panelWelcome.ResumeLayout(false);
+            this.panelWelcome.PerformLayout();
+            this.panelQuickAccess.ResumeLayout(false);
+            this.panelQuickAccess.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -408,6 +454,7 @@
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnBaoCaoTonKho;
         private System.Windows.Forms.Button btnNhapXuatKho;
+        private ToolStripMenuItem xuấtBáoCáoToolStripMenuItem;
     }
 }
 

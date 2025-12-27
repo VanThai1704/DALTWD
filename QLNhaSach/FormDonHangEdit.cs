@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
@@ -16,6 +15,7 @@ namespace QLNhaSach
             InitializeComponent();
             // Apply Vietnamese-capable font to dialog controls
             this.ApplyVietnameseFont();
+            UITheme.ApplyTheme(this);
             // Reassign UI strings with normalized Unicode at runtime to avoid any designer encoding issues
             try
             {

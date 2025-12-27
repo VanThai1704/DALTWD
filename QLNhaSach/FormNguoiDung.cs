@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {
@@ -13,7 +13,40 @@ namespace QLNhaSach
             InitializeComponent();
             this.ApplyVietnameseFont();
             UITheme.ApplyTheme(this);
+            StyleMenus();
             LoadData();
+        }
+
+        /// <summary>
+        /// Style the menus for professional appearance
+        /// </summary>
+        private void StyleMenus()
+        {
+            if (menuStrip1 != null)
+            {
+                menuStrip1.ImageScalingSize = new Size(16, 16);
+                menuStrip1.RenderMode = ToolStripRenderMode.Professional;
+            }
+        }
+
+        /// <summary>
+        /// Create a simple colored icon
+        /// </summary>
+        private static Image CreateColorIcon(Color color, int width, int height)
+        {
+            var bitmap = new Bitmap(width, height);
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                using (var brush = new SolidBrush(color))
+                {
+                    g.FillEllipse(brush, 2, 2, width - 4, height - 4);
+                }
+                using (var pen = new Pen(Color.DarkGray))
+                {
+                    g.DrawEllipse(pen, 2, 2, width - 4, height - 4);
+                }
+            }
+            return bitmap;
         }
 
         private void LoadData()
@@ -23,7 +56,7 @@ namespace QLNhaSach
                 using var db = new QuanLyNhaSachContext();
                 // Use AsNoTracking and server-side projection to avoid SqlNullValueException
                 var data = db.NguoiDungs
-                    .Include(n => n.Role)
+                    .Include("Role")
                     .AsNoTracking()
                     .Select(n => new
                     {

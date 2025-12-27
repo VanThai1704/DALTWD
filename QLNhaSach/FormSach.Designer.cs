@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormSach
     {
@@ -54,13 +57,56 @@
             this.toolStrip1.Size = new System.Drawing.Size(1000, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(16, 16);
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
 
-            this.btnAdd.Text = "Thêm"; this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text; this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            this.btnEdit.Text = "Sửa"; this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text; this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            this.btnDelete.Text = "Xóa"; this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text; this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            this.btnExport.Text = "Xuất Excel"; this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text; this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            this.txtSearch.Name = "txtSearch"; this.txtSearch.Size = new System.Drawing.Size(200, 27);
-            this.btnSearch.Text = "Tìm"; this.btnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text; this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // btnAdd
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(70, 24);
+            this.btnAdd.Text = "Thêm"; 
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText; 
+            this.btnAdd.Image = null;
+            this.btnAdd.ToolTipText = "Thêm sách mới (Ctrl+N)";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            
+            // btnEdit
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(58, 24);
+            this.btnEdit.Text = "Sửa"; 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText; 
+            this.btnEdit.Image = null;
+            this.btnEdit.ToolTipText = "Chỉnh sửa thông tin sách (Ctrl+E)";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            
+            // btnDelete
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(59, 24);
+            this.btnDelete.Text = "Xóa"; 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText; 
+            this.btnDelete.Image = null;
+            this.btnDelete.ToolTipText = "Xóa sách (Delete)";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            
+            // btnExport
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(101, 24);
+            this.btnExport.Text = "Xuất Excel"; 
+            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText; 
+            this.btnExport.Image = null;
+            this.btnExport.ToolTipText = "Xuất danh sách ra Excel (Ctrl+X)";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            
+            this.txtSearch.Name = "txtSearch"; 
+            this.txtSearch.Size = new System.Drawing.Size(200, 27);
+            
+            // btnSearch
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(80, 24);
+            this.btnSearch.Text = "Tìm kiếm"; 
+            this.btnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText; 
+            this.btnSearch.Image = null;
+            this.btnSearch.ToolTipText = "Tìm kiếm sách (Ctrl+F)";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 
             // dataGridView1
             // 

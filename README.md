@@ -1,461 +1,181 @@
-﻿# DO AN MON: LAP TRINH TREN MOI TRUONG WINDOWS
-## HE THONG QUAN LY NHA SACH
+﻿# ĐỒ ÁN MÔN HỌC: LẬP TRÌNH TRÊN MÔI TRƯỜNG WINDOWS
+## HỆ THỐNG QUẢN LÝ NHÀ SÁCH
 
 ---
 
-## THONG TIN DO AN
+## 1. THÔNG TIN CHUNG
 
-**Mon hoc:** Lap trinh tren moi truong Windows  
-**Ngon ngu lap trinh:** C# .NET 8  
-**Cong nghe:** Windows Forms Application, Entity Framework Core  
-**Co so du lieu:** Microsoft SQL Server  
-
----
-
-## TONG QUAN DO AN
-
-### Gioi thieu
-He thong quan ly nha sach la ung dung Windows Forms duoc xay dung nham muc dich quan ly hieu qua hoat dong kinh doanh cua mot cua hang sach. Ung dung cung cap day du cac chuc nang quan ly sach, khach hang, don hang, kho hang va thong ke bao cao.
-
-### Muc tieu
-- Xay dung ung dung Windows Forms hoan chinh voi giao dien than thien
-- Ap dung cac ky thuat lap trinh huong doi tuong (OOP) trong C#
-- Su dung Entity Framework Core de thao tac co so du lieu
-- Trien khai he thong phan quyen nguoi dung (RBAC)
-- Bao mat thong tin nguoi dung voi ma hoa mat khau
-
+- **Môn học:** Lập trình trên môi trường Windows  
+- **Đề tài:** Xây dựng hệ thống quản lý nhà sách  
+- **Ngôn ngữ:** C# (Windows Forms, .NET Framework 4.8)  
+- **Cơ sở dữ liệu:** Microsoft SQL Server  
+- **ORM:** Entity Framework 6.4.4  
+- **Báo cáo:** Microsoft ReportViewer + RDLC  
+- **Thư viện hỗ trợ:** ClosedXML (Excel), iTextSharp (PDF), OpenXML (Word)
 
 ---
 
-## CHUC NANG CHINH CUA HE THONG
+## 2. MỤC TIÊU ĐỀ TÀI
 
-### 1. Module Quan ly Sach
-**Chuc nang:**
-- Them moi, cap nhat, xoa thong tin sach
-- Quan ly the loai sach, tac gia, nha xuat ban
-- Tim kiem va loc sach theo ma sach, ten sach, tac gia, the loai
-- Hien thi danh sach sach duoi dang DataGridView
-
-**Cac control su dung:**
-- DataGridView: Hien thi danh sach sach
-- TextBox: Nhap thong tin sach (Ma sach, Ten sach, Tac gia, Gia ban)
-- ComboBox: Chon the loai, nha xuat ban
-- Button: Them, Sua, Xoa, Tim kiem
-- NumericUpDown: Nhap so luong ton kho
-
-### 2. Module Quan ly Khach hang
-**Chuc nang:**
-- Quan ly thong tin khach hang (Ma KH, Ten, Dia chi, SDT)
-- Theo doi lich su mua hang cua khach hang
-- Thong ke khach hang than thiet
-
-**Cac control su dung:**
-- DataGridView: Danh sach khach hang
-- TextBox: Thong tin khach hang
-- DateTimePicker: Ngay dang ky
-- MaskedTextBox: So dien thoai
-
-### 3. Module Quan ly Don hang
-**Chuc nang:**
-- Tao don hang moi cho khach hang
-- Them sach vao don hang
-- Tinh tong tien tu dong
-- Theo doi trang thai don hang (Cho xu ly, Dang giao, Hoan thanh, Huy)
-- In hoa don
-
-**Cac control su dung:**
-- ComboBox: Chon khach hang, chon sach
-- NumericUpDown: So luong sach
-- DataGridView: Chi tiet don hang
-- Label: Hien thi tong tien
-- GroupBox: Nhom thong tin don hang
-
-### 4. Module Quan ly Kho
-**Chuc nang:**
-- Nhap hang vao kho
-- Xuat hang ra khoi kho
-- Bao cao ton kho hien tai
-- Canh bao sach sap het hang
-
-**Cac control su dung:**
-- RadioButton: Chon loai giao dich (Nhap/Xuat)
-- DateTimePicker: Ngay giao dich
-- DataGridView: Danh sach giao dich
-
-### 5. Module Thong ke & Bao cao
-**Chuc nang:**
-- Bao cao doanh thu theo thang, nam
-- Thong ke sach ban chay
-- Bao cao ton kho chi tiet
-- Xuat bao cao ra Excel
-
-**Cac control su dung:**
-- Chart: Bieu do thong ke (neu co)
-- DataGridView: Bang du lieu thong ke
-- DateTimePicker: Chon khoang thoi gian thong ke
-
-### 6. Module Quan ly Nguoi dung & Phan quyen
-**Chuc nang:**
-- Dang nhap he thong
-- Quan ly tai khoan nguoi dung (Admin)
-- Phan quyen theo vai tro
-- Bao mat mat khau voi Salt & Hash (PBKDF2)
-
-**Cac control su dung:**
-- TextBox: Ten dang nhap, Mat khau
-- CheckBox: Hien thi mat khau, Kich hoat tai khoan
-- ComboBox: Chon vai tro
-
-
-
+- Xây dựng ứng dụng desktop quản lý nhà sách với giao diện thân thiện, dễ sử dụng.  
+- Áp dụng lập trình hướng đối tượng (OOP) trong C#.  
+- Sử dụng Entity Framework để làm việc với CSDL SQL Server.  
+- Thiết kế hệ thống phân quyền người dùng theo vai trò (Admin, Quản lý, Nhân viên).  
+- Đảm bảo an toàn tài khoản bằng cơ chế `PasswordSalt` + hash mật khẩu (class `PasswordHelper`).  
+- Tích hợp hệ thống báo cáo (RDLC + ReportViewer) và chức năng xuất dữ liệu ra Excel/PDF/Word.
 
 ---
 
-## KY THUAT LAP TRINH WINDOWS FORMS DA SU DUNG
+## 3. CÔNG NGHỆ VÀ CẤU TRÚC DỰ ÁN
 
-### 1. Cac Control co ban
-- **Form**: Container chinh chua cac control
-- **MenuStrip**: Tao menu cho ung dung
-- **Button**: Xu ly cac su kien click
-- **TextBox**: Nhap lieu van ban
-- **Label**: Hien thi nhan, thong tin
-- **ComboBox**: Chon lua tuy chon tu danh sach
-- **DataGridView**: Hien thi du lieu dang bang
-- **DateTimePicker**: Chon ngay thang
-- **NumericUpDown**: Nhap so voi gia tri min/max
-- **Panel**: Nhom cac control lai
-- **GroupBox**: Nhom cac control co lien quan
+### 3.1. Công nghệ chính
 
-### 2. Xu ly su kien (Event Handling)
-```csharp
-// Su kien Click cua Button
-private void btnThem_Click(object sender, EventArgs e)
-{
-    // Code xu ly
-}
+- **.NET Framework 4.8** – nền tảng chạy ứng dụng WinForms.  
+- **C#** – ngôn ngữ lập trình chính.  
+- **Windows Forms** – xây dựng giao diện người dùng.  
+- **SQL Server** – lưu trữ dữ liệu.  
+- **Entity Framework 6.4.4** – ORM truy cập dữ liệu.  
+- **Microsoft ReportViewer + RDLC** – hiển thị và in báo cáo.  
+- **ClosedXML, iTextSharp, OpenXML** – xuất dữ liệu ra Excel, PDF, Word.
 
-// Su kien Load cua Form
-private void Form_Load(object sender, EventArgs e)
-{
-    // Khoi tao du lieu
-}
+### 3.2. Thư mục quan trọng
 
-// Su kien CellClick cua DataGridView
-private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-{
-    // Xu ly khi click vao cell
-}
-```
+- `QLNhaSach/` – mã nguồn chính của ứng dụng WinForms.  
+  - `Form*.cs` – các form giao diện (Sách, Khách hàng, Đơn hàng, Kho, Thống kê, Báo cáo, Đăng nhập, Người dùng, Role, …).  
+  - `Models/QuanLyNhaSachModels.cs` – các lớp mô hình (Sach, KhachHang, DonHang, TonKho, HoaDon, NguoiDung, Role, …).  
+  - `Report/` – các file báo cáo RDLC (Report1.rdlc, Report1Backup.rdlc, Report1Simple.rdlc, …).  
+  - `ReportHelper.cs` – tạo, cấu hình và xuất báo cáo (ReportViewer, RDLC, export Excel/PDF/Word).  
+  - `UITheme.cs`, `FontHelper.cs` – tùy chỉnh giao diện (màu sắc, font tiếng Việt, DataGridView, Button, MenuStrip…).  
+  - `GridHelper.cs`, `DataGridViewExtensions.cs` – đặt tên cột tiếng Việt, định dạng lưới dữ liệu.  
+  - `PasswordHelper.cs`, `RolePermissions.cs` – xử lý bảo mật mật khẩu và phân quyền theo vai trò.  
+- `QuanLyNhaSach.bak` – file backup cơ sở dữ liệu SQL Server (**GIỮ LẠI**, không xóa).
 
-### 3. Lap trinh huong doi tuong (OOP)
-```csharp
-// Class model
-public class Sach
-{
-    public int MaSach { get; set; }
-    public string TenSach { get; set; }
-    public decimal GiaBan { get; set; }
-    public int SoLuongTon { get; set; }
-}
-
-// Ke thua (Inheritance)
-public class FormSachEdit : Form
-{
-    // Cac thanh phan cua form
-}
-
-// Dong goi (Encapsulation)
-private void LoadData()
-{
-    // Method private chi dung trong class
-}
-```
-
-### 4. Ket noi va thao tac CSDL voi Entity Framework Core
-```csharp
-// DbContext
-public class QuanLyNhaSachContext : DbContext
-{
-    public DbSet<Sach> Saches { get; set; }
-    public DbSet<KhachHang> KhachHangs { get; set; }
-    public DbSet<DonHang> DonHangs { get; set; }
-}
-
-// CRUD Operations
-using (var db = new QuanLyNhaSachContext())
-{
-    // Create
-    db.Saches.Add(new Sach { TenSach = "ABC" });
-    
-    // Read
-    var sach = db.Saches.Find(id);
-    
-    // Update
-    sach.GiaBan = 100000;
-    db.SaveChanges();
-    
-    // Delete
-    db.Saches.Remove(sach);
-    db.SaveChanges();
-}
-```
-
-### 5. Validation va xu ly loi
-```csharp
-// Kiem tra du lieu dau vao
-if (string.IsNullOrWhiteSpace(txtTenSach.Text))
-{
-    MessageBox.Show("Vui long nhap ten sach!", "Thong bao", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    return;
-}
-
-// Try-Catch xu ly loi
-try
-{
-    db.SaveChanges();
-    MessageBox.Show("Luu thanh cong!");
-}
-catch (Exception ex)
-{
-    MessageBox.Show($"Loi: {ex.Message}");
-}
-```
-
-### 6. Tuy chinh giao dien (UI Customization)
-```csharp
-// Thay doi mau sac, font chu
-this.BackColor = Color.FromArgb(236, 240, 241);
-label.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-button.FlatStyle = FlatStyle.Flat;
-
-// Tao giao dien theme tu class UITheme
-UITheme.StyleButton(btnThem);
-UITheme.StyleDataGridView(dataGridView);
-```
+> Lưu ý: Các thư mục build tạm như `QLNhaSach/bin` và `QLNhaSach/obj` đã được dọn dẹp; khi build lại dự án, Visual Studio sẽ tự tạo lại.
 
 ---
 
-## CONG NGHE VA THU VIEN SU DUNG
+## 4. CÁC CHỨC NĂNG CHÍNH
 
-### Framework & Language
-- **.NET 8.0**: Framework moi nhat cua Microsoft
-- **C# 12.0**: Ngon ngu lap trinh hien dai, huong doi tuong
-- **Windows Forms**: Cong nghe xay dung giao dien desktop
+### 4.1. Quản lý sách
 
-### Database
-- **Microsoft SQL Server 2019+**: He quan tri co so du lieu
-- **Entity Framework Core 8.0**: ORM framework cho .NET
+- Thêm, sửa, xóa thông tin sách.  
+- Quản lý thể loại sách, nhà xuất bản.  
+- Tìm kiếm sách theo mã sách, tên sách, tác giả, thể loại.  
+- Hiển thị danh sách sách bằng `DataGridView` với tiêu đề cột tiếng Việt.  
 
-### NuGet Packages
-```xml
-<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
-```
+### 4.2. Quản lý khách hàng
 
-### Design Patterns
-- **Repository Pattern**: Truy xuat du lieu
-- **MVC Pattern**: Phan tach logic nghiep vu
-- **Singleton Pattern**: Quan ly ket noi database
-- **Factory Pattern**: Tao doi tuong form
+- Lưu thông tin khách hàng: mã KH, tên, địa chỉ, số điện thoại, email, ngày đăng ký.  
+- Tìm kiếm khách hàng theo mã hoặc tên.  
+- Hỗ trợ thống kê khách hàng thông qua các báo cáo.  
 
----
+### 4.3. Quản lý đơn hàng & hóa đơn
 
-## HE THONG PHAN QUYEN (ROLE-BASED ACCESS CONTROL)
+- Lập đơn hàng cho khách hàng, chọn sách và số lượng.  
+- Tự động tính tổng tiền đơn hàng.  
+- Quản lý trạng thái đơn hàng: Chờ xử lý, Đang giao, Hoàn thành, Hủy.  
+- Liên kết với hóa đơn (FormHoaDon) để theo dõi thanh toán.  
 
-### Cac vai tro trong he thong
-1. **Admin** (RoleId: 1)
-   - Toan quyen quan tri he thong
-   - Quan ly nguoi dung va vai tro
-   - Sao luu va phuc hoi du lieu
-   - Xem tat ca bao cao va thong ke
+### 4.4. Quản lý kho (Nhập/Xuất kho, tồn kho)
 
-2. **User** (RoleId: 2)
-   - Xem va them moi du lieu co ban
-   - Khong co quyen xoa
-   - Khong xem duoc bao cao doanh thu
+- Nhập kho, xuất kho theo từng mã sách.  
+- Lưu lịch sử giao dịch kho (số lượng, loại giao dịch, thời gian, ghi chú).  
+- Xem báo cáo tồn kho, số lượng còn lại, giá trị tồn kho.  
+- Cảnh báo sách sắp hết hàng (thông qua các báo cáo thống kê).
 
-3. **Manager** (RoleId: 3)
-   - Quan ly day du du lieu nghiep vu
-   - Xem bao cao va thong ke
-   - Khong quan ly duoc nguoi dung
+### 4.5. Thống kê & báo cáo
 
-4. **ReadOnly** (RoleId: 4)
-   - Chi xem du lieu
-   - Khong co quyen them, sua, xoa
-   - Khong quan ly kho
+- Báo cáo doanh thu theo tháng, theo năm.  
+- Báo cáo tồn kho chi tiết, danh sách sách, danh sách khách hàng, danh sách đơn hàng.  
+- Xem báo cáo trực tiếp trên ReportViewer (RDLC).  
+- Xuất báo cáo ra Excel, PDF, Word thông qua `ReportHelper` (ClosedXML, iTextSharp, OpenXML).
 
-### Ma tran Phan quyen
+### 4.6. Quản lý người dùng & phân quyền
 
-| Chuc nang | Admin | Manager | User | ReadOnly |
-|-----------|-------|---------|------|----------|
-| Quan ly Sach | ? | ? | Them/Sua | Xem |
-| Quan ly Khach hang | ? | ? | Them/Sua | Xem |
-| Quan ly Don hang | ? | ? | Them/Sua | Xem |
-| Nhap xuat kho | ? | ? | ? | ? |
-| Bao cao ton kho | ? | ? | ? | ? |
-| Thong ke doanh thu | ? | ? | ? | ? |
-| Xuat Excel | ? | ? | ? | ? |
-| Quan ly nguoi dung | ? | ? | ? | ? |
-| Quan ly vai tro | ? | ? | ? | ? |
-| Sao luu/Phuc hoi | ? | ? | ? | ? |
-
+- Màn hình đăng nhập hệ thống.  
+- Quản lý người dùng: thêm, sửa, xóa, kích hoạt/tạm khóa tài khoản.  
+- Quản lý vai trò (Role) và phân quyền theo vai trò.  
+- Cơ chế bảo mật: mỗi người dùng có `PasswordSalt` riêng, mật khẩu được hash và lưu an toàn.  
+- Phân quyền hiển thị menu, nút chức năng theo vai trò (Admin / Quản lý / Nhân viên).
 
 ---
 
-## CAU TRUC CO SO DU LIEU
+## 5. HƯỚNG DẪN CÀI ĐẶT VÀ CHẠY CHƯƠNG TRÌNH
 
-### So do quan he (ERD - Entity Relationship Diagram)
+### 5.1. Yêu cầu môi trường
 
-**Cac bang chinh:**
-1. **Sach** (MaSach, TenSach, TacGia, NamXuatBan, GiaBan, SoLuongTon, MaTheLoai, MaNXB)
-2. **TheLoai** (MaTheLoai, TenTheLoai)
-3. **NhaXuatBan** (MaNXB, TenNXB, DiaChi, SoDienThoai)
-4. **KhachHang** (MaKH, TenKH, DiaChi, SoDienThoai, NgayDangKy)
-5. **DonHang** (MaDonHang, MaKH, NgayDat, TongTien, TrangThai)
-6. **ChiTietDonHang** (MaDonHang, MaSach, SoLuong, DonGia, ThanhTien)
-7. **GiaoDichKho** (MaGiaoDich, MaSach, LoaiGiaoDich, SoLuong, NgayGiaoDich)
-8. **NguoiDung** (NguoiDungId, TenDangNhap, MatKhauHash, PasswordSalt, HoTen, RoleId, KichHoat)
-9. **Role** (RoleId, RoleName, MoTa)
+- Windows cài .NET Framework 4.8 trở lên.  
+- SQL Server (khuyến nghị 2016 trở lên).  
+- Visual Studio (2019/2022) hoặc công cụ tương đương để mở solution.
 
-**Cac moi quan he:**
-- Sach N-1 TheLoai
-- Sach N-1 NhaXuatBan
-- DonHang N-1 KhachHang
-- ChiTietDonHang N-1 DonHang
-- ChiTietDonHang N-1 Sach
-- GiaoDichKho N-1 Sach
-- NguoiDung N-1 Role
+### 5.2. Khởi tạo cơ sở dữ liệu
 
----
+1. Tạo database trống tên **QuanLyNhaSach** trong SQL Server.  
+2. Phục hồi file backup `QuanLyNhaSach.bak` vào database đó (Restore Database).  
+3. Nếu chưa có bảng người dùng/role, chạy script `CreateUserTables.sql` (tham khảo thêm file `QLNhaSach/LOGIN_INFO.md`).
 
-## YEU CAU HE THONG
-
-### Phan mem can thiet
-- .NET 8 SDK
-- SQL Server 2019 tro len (hoac SQL Server Express)
-- Visual Studio 2022 (khuyen nghi)
-
-### Thu vien su dung
-- Microsoft.EntityFrameworkCore 8.0.0
-- Microsoft.EntityFrameworkCore.SqlServer 8.0.0
-- Microsoft.EntityFrameworkCore.Tools 8.0.0
-
-
----
-
-## HUONG DAN CAI DAT VA CHAY UNG DUNG
-
-### Buoc 1: Cai dat phan mem yeu cau
-1. Cai dat **.NET 8 SDK** tu https://dotnet.microsoft.com/download
-2. Cai dat **SQL Server 2019** hoac **SQL Server Express**
-3. Cai dat **Visual Studio 2022** (Community Edition mien phi)
-4. Cai dat **SQL Server Management Studio (SSMS)** de quan ly database
-
-### Buoc 2: Tao co so du lieu
-
-Chay cac script SQL theo thu tu:
+Ví dụ dùng `sqlcmd`:
 
 ```bash
-# 1. Tao database va bang nguoi dung
-SQL: QLNhaSach/CreateUserTables.sql
-
-# 2. Tao he thong quan ly kho
-SQL: QLNhaSach/CreateStockManagementSystem.sql
-
-# 3. Nhap du lieu mau (tuy chon)
-SQL: QLNhaSach/SampleData.sql
+sqlcmd -S . -d QuanLyNhaSach -E -i CreateUserTables.sql
 ```
 
+### 5.3. Tài khoản đăng nhập mặc định
 
-### Buoc 3: Cau hinh Connection String
+Xem chi tiết trong `QLNhaSach/LOGIN_INFO.md`. Một số tài khoản mặc định:
 
-1. Mo file `QLNhaSach/Models/QuanLyNhaSachModels.cs`
-2. Tim dong `optionsBuilder.UseSqlServer(...)`
-3. Thay doi connection string cho phu hop:
 
-```csharp
-// Doi ten server thanh ten SQL Server cua ban
-optionsBuilder.UseSqlServer(
-    "Server=YOUR_SERVER_NAME;Database=QuanLyNhaSach;Trusted_Connection=True;TrustServerCertificate=True;"
-);
+Khuyến nghị đổi mật khẩu ngay sau khi đăng nhập lần đầu.
 
-// Vi du:
-// - Server=(localdb)\\mssqllocaldb  // SQL LocalDB
-// - Server=localhost                 // SQL Server Express
-// - Server=.\\SQLEXPRESS             // SQL Server Express co ten instance
-```
+### 5.4. Cách chạy chương trình
 
-### Buoc 4: Build va chay ung dung
+- Mở file solution `QLNhaSach.sln` bằng Visual Studio.  
+- Chọn project khởi động là `QLNhaSach`.  
+- Nhấn **Start/Run** để chạy ứng dụng.  
 
-**Cach 1: Su dung Visual Studio**
-1. Mo file `QLNhaSach.sln` trong Visual Studio
-2. Nhan `Ctrl + Shift + B` de build solution
-3. Nhan `F5` de chay ung dung (Debug mode)
-4. Hoac nhan `Ctrl + F5` de chay khong debug
+Hoặc dùng dòng lệnh (tại thư mục gốc dự án):
 
-**Cach 2: Su dung Command Line**
 ```bash
-# Di chuyen den thu muc project
-cd C:\LTMTWD\QLNhaSach
-
-# Restore NuGet packages
-dotnet restore
-
-# Build project
 dotnet build
-
-# Chay ung dung
-dotnet run --project QLNhaSach/QLNhaSach.csproj
 ```
 
-**Cach 3: Su dung PowerShell Script**
-```powershell
-# Chay script rebuild tu dong
-.\tools\rebuild-app.ps1
-```
-
-### Buoc 5: Dang nhap he thong
-
-
-Sau khi chay ung dung, su dung cac tai khoan sau de dang nhap:
-
-**Tai khoan Admin (Quan tri vien):**
-- Username: `admin`
-- Password: `Admin@123`
-- Quyen han: Toan quyen quan tri he thong
-
-**Tai khoan Manager (Quan ly):**
-- Username: `manager`  
-- Password: `Manager@123`
-- Quyen han: Quan ly nghiep vu, xem bao cao
-
-**Tai khoan User (Nhan vien):**
-- Username: `user1`
-- Password: `User@123`
-- Quyen han: Them/sua du lieu co ban
-
-**Tai khoan ReadOnly (Chi xem):**
-- Username: `viewer`
-- Password: `Viewer@123`
-- Quyen han: Chi xem du lieu
-
-*Xem chi tiet trong file `QLNhaSach/LOGIN_INFO.md`*
+File chạy sau khi build: `QLNhaSach\bin\Debug\net48\QLNhaSach.exe`.
 
 ---
 
-## CAU TRUC THU MUC DU AN
+## 6. GỢI Ý BỐ CỤC VIẾT BÁO CÁO ĐỒ ÁN
 
+Khi viết báo cáo, có thể dựa trên các mục sau:
 
-```
-QLNhaSach/
-├── QLNhaSach.sln               # Solution file
-├── README.md                    # Tai lieu huong dan
-├── .gitignore                   # Git ignore file
-│
-├── QLNhaSach/                   # Project chinh
-│   ├── QLNhaSach.csproj        # Project file
+1. **Giới thiệu đề tài**  
+   - Lý do chọn đề tài.  
+   - Mục tiêu, phạm vi áp dụng.  
+
+2. **Phân tích hệ thống**  
+   - Các chức năng chính (quản lý sách, khách hàng, đơn hàng, kho, báo cáo, người dùng).  
+   - Sơ đồ use-case, mô tả yêu cầu nghiệp vụ.  
+
+3. **Thiết kế hệ thống**  
+   - Mô hình cơ sở dữ liệu (các bảng: Sach, KhachHang, DonHang, TonKho, HoaDon, NguoiDung, Role, NhaXuatBan, TheLoai, …).  
+   - Thiết kế lớp (class diagram) và một số class quan trọng (Models, Helper).  
+   - Thiết kế giao diện: Form chính, các form chức năng, form báo cáo.  
+
+4. **Cài đặt và triển khai**  
+   - Mô tả cách hiện thực từng module trong mã nguồn.  
+   - Trình bày cách sử dụng Entity Framework, ReportViewer, các thư viện export.  
+   - Minh họa bằng hình ảnh giao diện và đoạn code tiêu biểu.
+
+5. **Kiểm thử và đánh giá**  
+   - Một số ca kiểm thử (thêm/sửa/xóa, tìm kiếm, nhập/xuất kho, tạo báo cáo, phân quyền…).  
+   - Đánh giá kết quả đạt được, những điểm mạnh/yếu của hệ thống.
+
+6. **Kết luận và hướng phát triển**  
+   - Kết luận chung về đề tài.  
+   - Đề xuất hướng phát triển: thêm biểu đồ thống kê, gửi email báo cáo, đưa hệ thống lên web, v.v.
+
+---
+
+README này được viết lại hoàn toàn bằng tiếng Việt có dấu để hỗ trợ trực tiếp cho việc viết báo cáo và thuyết trình đồ án.
 │   │
 │   ├── Models/                  # Cac lop Model (Entity Framework)
 │   │   └── QuanLyNhaSachModels.cs

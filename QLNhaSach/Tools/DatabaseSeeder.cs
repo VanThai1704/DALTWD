@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore;
 using QLNhaSach.Models;
 
 namespace QLNhaSach.Tools
@@ -35,7 +35,7 @@ namespace QLNhaSach.Tools
             using var db = new QuanLyNhaSachContext();
             foreach (var batch in batches)
             {
-                db.Database.ExecuteSqlRaw(batch);
+                db.Database.ExecuteSqlCommand(batch);
             }
         }
 

@@ -1,3 +1,6 @@
+﻿using System.Drawing;
+using System.Windows.Forms;
+
 namespace QLNhaSach
 {
     partial class FormBaoCao
@@ -28,179 +31,214 @@ namespace QLNhaSach
 
         private void InitializeComponent()
         {
-            panelTop = new Panel();
-            lblTitle = new Label();
-            lblLoaiBaoCao = new Label();
-            cboLoaiBaoCao = new ComboBox();
-            lblNam = new Label();
-            dtpNam = new DateTimePicker();
-            btnTaoBaoCao = new Button();
-            reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            panelBottom = new Panel();
-            btnXuatExcel = new Button();
-            btnXuatPDF = new Button();
-            btnXuatWord = new Button();
-            btnDong = new Button();
-            panelTop.SuspendLayout();
-            panelBottom.SuspendLayout();
-            SuspendLayout();
-            
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblLoaiBaoCao = new System.Windows.Forms.Label();
+            this.cboLoaiBaoCao = new System.Windows.Forms.ComboBox();
+            this.lblNam = new System.Windows.Forms.Label();
+            this.dtpNam = new System.Windows.Forms.DateTimePicker();
+            this.btnTaoBaoCao = new System.Windows.Forms.Button();
+            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.btnXuatPDF = new System.Windows.Forms.Button();
+            this.btnXuatWord = new System.Windows.Forms.Button();
+            this.btnDong = new System.Windows.Forms.Button();
+            this.panelTop.SuspendLayout();
+            this.panelBottom.SuspendLayout();
+            this.SuspendLayout();
+            // 
             // panelTop
-            panelTop.BackColor = Color.White;
-            panelTop.Controls.Add(lblTitle);
-            panelTop.Controls.Add(lblLoaiBaoCao);
-            panelTop.Controls.Add(cboLoaiBaoCao);
-            panelTop.Controls.Add(lblNam);
-            panelTop.Controls.Add(dtpNam);
-            panelTop.Controls.Add(btnTaoBaoCao);
-            panelTop.Dock = DockStyle.Top;
-            panelTop.Location = new Point(0, 0);
-            panelTop.Name = "panelTop";
-            panelTop.Padding = new Padding(10);
-            panelTop.Size = new Size(1200, 120);
-            panelTop.TabIndex = 0;
-            
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.Controls.Add(this.lblTitle);
+            this.panelTop.Controls.Add(this.lblLoaiBaoCao);
+            this.panelTop.Controls.Add(this.cboLoaiBaoCao);
+            this.panelTop.Controls.Add(this.lblNam);
+            this.panelTop.Controls.Add(this.dtpNam);
+            this.panelTop.Controls.Add(this.btnTaoBaoCao);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Padding = new System.Windows.Forms.Padding(10);
+            this.panelTop.Size = new System.Drawing.Size(1100, 120);
+            this.panelTop.TabIndex = 0;
+            // 
             // lblTitle
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitle.Location = new Point(13, 10);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(250, 25);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "BAO CAO VA XUAT DU LIEU";
-            
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.lblTitle.Location = new System.Drawing.Point(13, 10);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(332, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "BÁO CÁO VÀ XUẤT DỮ LIỆU";
+            // 
             // lblLoaiBaoCao
-            lblLoaiBaoCao.AutoSize = true;
-            lblLoaiBaoCao.Location = new Point(13, 50);
-            lblLoaiBaoCao.Name = "lblLoaiBaoCao";
-            lblLoaiBaoCao.Size = new Size(90, 19);
-            lblLoaiBaoCao.TabIndex = 1;
-            lblLoaiBaoCao.Text = "Loai bao cao:";
-            
+            // 
+            this.lblLoaiBaoCao.AutoSize = true;
+            this.lblLoaiBaoCao.Location = new System.Drawing.Point(13, 44);
+            this.lblLoaiBaoCao.Name = "lblLoaiBaoCao";
+            this.lblLoaiBaoCao.Size = new System.Drawing.Size(111, 23);
+            this.lblLoaiBaoCao.TabIndex = 1;
+            this.lblLoaiBaoCao.Text = "Loại báo cáo:";
+            // 
             // cboLoaiBaoCao
-            cboLoaiBaoCao.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboLoaiBaoCao.FormattingEnabled = true;
-            cboLoaiBaoCao.Location = new Point(110, 47);
-            cboLoaiBaoCao.Name = "cboLoaiBaoCao";
-            cboLoaiBaoCao.Size = new Size(300, 27);
-            cboLoaiBaoCao.TabIndex = 2;
-            
+            // 
+            this.cboLoaiBaoCao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoaiBaoCao.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboLoaiBaoCao.FormattingEnabled = true;
+            this.cboLoaiBaoCao.Location = new System.Drawing.Point(130, 47);
+            this.cboLoaiBaoCao.Name = "cboLoaiBaoCao";
+            this.cboLoaiBaoCao.Size = new System.Drawing.Size(300, 31);
+            this.cboLoaiBaoCao.TabIndex = 2;
+            // 
             // lblNam
-            lblNam.AutoSize = true;
-            lblNam.Location = new Point(430, 50);
-            lblNam.Name = "lblNam";
-            lblNam.Size = new Size(40, 19);
-            lblNam.TabIndex = 3;
-            lblNam.Text = "Nam:";
-            
+            // 
+            this.lblNam.AutoSize = true;
+            this.lblNam.Location = new System.Drawing.Point(449, 43);
+            this.lblNam.Name = "lblNam";
+            this.lblNam.Size = new System.Drawing.Size(51, 23);
+            this.lblNam.TabIndex = 3;
+            this.lblNam.Text = "Năm:";
+            // 
             // dtpNam
-            dtpNam.CustomFormat = "yyyy";
-            dtpNam.Format = DateTimePickerFormat.Custom;
-            dtpNam.Location = new Point(476, 47);
-            dtpNam.Name = "dtpNam";
-            dtpNam.ShowUpDown = true;
-            dtpNam.Size = new Size(100, 27);
-            dtpNam.TabIndex = 4;
-            
+            // 
+            this.dtpNam.CustomFormat = "yyyy";
+            this.dtpNam.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNam.Location = new System.Drawing.Point(516, 44);
+            this.dtpNam.Name = "dtpNam";
+            this.dtpNam.ShowUpDown = true;
+            this.dtpNam.Size = new System.Drawing.Size(100, 30);
+            this.dtpNam.TabIndex = 4;
+            // 
             // btnTaoBaoCao
-            btnTaoBaoCao.BackColor = Color.FromArgb(41, 128, 185);
-            btnTaoBaoCao.FlatStyle = FlatStyle.Flat;
-            btnTaoBaoCao.ForeColor = Color.White;
-            btnTaoBaoCao.Location = new Point(596, 43);
-            btnTaoBaoCao.Name = "btnTaoBaoCao";
-            btnTaoBaoCao.Size = new Size(120, 35);
-            btnTaoBaoCao.TabIndex = 5;
-            btnTaoBaoCao.Text = "Tao bao cao";
-            btnTaoBaoCao.UseVisualStyleBackColor = false;
-            btnTaoBaoCao.Click += btnTaoBaoCao_Click;
-            
+            // 
+            this.btnTaoBaoCao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnTaoBaoCao.FlatAppearance.BorderSize = 0;
+            this.btnTaoBaoCao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnTaoBaoCao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))), ((int)(((byte)(220)))));
+            this.btnTaoBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTaoBaoCao.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTaoBaoCao.ForeColor = System.Drawing.Color.White;
+            this.btnTaoBaoCao.Location = new System.Drawing.Point(633, 43);
+            this.btnTaoBaoCao.Name = "btnTaoBaoCao";
+            this.btnTaoBaoCao.Size = new System.Drawing.Size(120, 35);
+            this.btnTaoBaoCao.TabIndex = 5;
+            this.btnTaoBaoCao.Text = "[>] Tạo báo cáo";
+            this.btnTaoBaoCao.UseVisualStyleBackColor = false;
+            this.btnTaoBaoCao.Click += new System.EventHandler(this.btnTaoBaoCao_Click);
+            // 
             // reportViewer
-            reportViewer.Dock = DockStyle.Fill;
-            reportViewer.Location = new Point(0, 120);
-            reportViewer.Name = "reportViewer";
-            reportViewer.ServerReport.BearerToken = null;
-            reportViewer.Size = new Size(1200, 480);
-            reportViewer.TabIndex = 1;
-            
+            // 
+            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer.Location = new System.Drawing.Point(0, 120);
+            this.reportViewer.Name = "reportViewer";
+            this.reportViewer.ServerReport.BearerToken = null;
+            this.reportViewer.Size = new System.Drawing.Size(1100, 488);
+            this.reportViewer.TabIndex = 1;
+            // 
             // panelBottom
-            panelBottom.BackColor = Color.White;
-            panelBottom.Controls.Add(btnXuatExcel);
-            panelBottom.Controls.Add(btnXuatPDF);
-            panelBottom.Controls.Add(btnXuatWord);
-            panelBottom.Controls.Add(btnDong);
-            panelBottom.Dock = DockStyle.Bottom;
-            panelBottom.Location = new Point(0, 600);
-            panelBottom.Name = "panelBottom";
-            panelBottom.Padding = new Padding(10);
-            panelBottom.Size = new Size(1200, 60);
-            panelBottom.TabIndex = 2;
-            
+            // 
+            this.panelBottom.BackColor = System.Drawing.Color.White;
+            this.panelBottom.Controls.Add(this.btnXuatExcel);
+            this.panelBottom.Controls.Add(this.btnXuatPDF);
+            this.panelBottom.Controls.Add(this.btnXuatWord);
+            this.panelBottom.Controls.Add(this.btnDong);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 608);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Padding = new System.Windows.Forms.Padding(10);
+            this.panelBottom.Size = new System.Drawing.Size(1100, 60);
+            this.panelBottom.TabIndex = 2;
+            // 
             // btnXuatExcel
-            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
-            btnXuatExcel.FlatStyle = FlatStyle.Flat;
-            btnXuatExcel.ForeColor = Color.White;
-            btnXuatExcel.Location = new Point(13, 13);
-            btnXuatExcel.Name = "btnXuatExcel";
-            btnXuatExcel.Size = new Size(130, 35);
-            btnXuatExcel.TabIndex = 0;
-            btnXuatExcel.Text = "?? Xuat Excel";
-            btnXuatExcel.UseVisualStyleBackColor = false;
-            btnXuatExcel.Click += btnXuatExcel_Click;
-            
+            // 
+            this.btnXuatExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnXuatExcel.FlatAppearance.BorderSize = 0;
+            this.btnXuatExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnXuatExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))), ((int)(((byte)(220)))));
+            this.btnXuatExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
+            this.btnXuatExcel.Location = new System.Drawing.Point(28, 6);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(130, 35);
+            this.btnXuatExcel.TabIndex = 0;
+            this.btnXuatExcel.Text = "[E] Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = false;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // btnXuatPDF
-            btnXuatPDF.BackColor = Color.FromArgb(231, 76, 60);
-            btnXuatPDF.FlatStyle = FlatStyle.Flat;
-            btnXuatPDF.ForeColor = Color.White;
-            btnXuatPDF.Location = new Point(153, 13);
-            btnXuatPDF.Name = "btnXuatPDF";
-            btnXuatPDF.Size = new Size(130, 35);
-            btnXuatPDF.TabIndex = 1;
-            btnXuatPDF.Text = "?? Xuat PDF";
-            btnXuatPDF.UseVisualStyleBackColor = false;
-            btnXuatPDF.Click += btnXuatPDF_Click;
-            
+            // 
+            this.btnXuatPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnXuatPDF.FlatAppearance.BorderSize = 0;
+            this.btnXuatPDF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnXuatPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))), ((int)(((byte)(220)))));
+            this.btnXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXuatPDF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnXuatPDF.ForeColor = System.Drawing.Color.White;
+            this.btnXuatPDF.Location = new System.Drawing.Point(164, 6);
+            this.btnXuatPDF.Name = "btnXuatPDF";
+            this.btnXuatPDF.Size = new System.Drawing.Size(130, 35);
+            this.btnXuatPDF.TabIndex = 1;
+            this.btnXuatPDF.Text = "[P] Xuất PDF";
+            this.btnXuatPDF.UseVisualStyleBackColor = false;
+            this.btnXuatPDF.Click += new System.EventHandler(this.btnXuatPDF_Click);
+            // 
             // btnXuatWord
-            btnXuatWord.BackColor = Color.FromArgb(52, 152, 219);
-            btnXuatWord.FlatStyle = FlatStyle.Flat;
-            btnXuatWord.ForeColor = Color.White;
-            btnXuatWord.Location = new Point(293, 13);
-            btnXuatWord.Name = "btnXuatWord";
-            btnXuatWord.Size = new Size(130, 35);
-            btnXuatWord.TabIndex = 2;
-            btnXuatWord.Text = "?? Xuat Word";
-            btnXuatWord.UseVisualStyleBackColor = false;
-            btnXuatWord.Click += btnXuatWord_Click;
-            
+            // 
+            this.btnXuatWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnXuatWord.FlatAppearance.BorderSize = 0;
+            this.btnXuatWord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnXuatWord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            this.btnXuatWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXuatWord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnXuatWord.ForeColor = System.Drawing.Color.White;
+            this.btnXuatWord.Location = new System.Drawing.Point(300, 6);
+            this.btnXuatWord.Name = "btnXuatWord";
+            this.btnXuatWord.Size = new System.Drawing.Size(130, 35);
+            this.btnXuatWord.TabIndex = 2;
+            this.btnXuatWord.Text = "[W] Xuất Word";
+            this.btnXuatWord.UseVisualStyleBackColor = false;
+            this.btnXuatWord.Click += new System.EventHandler(this.btnXuatWord_Click);
+            // 
             // btnDong
-            btnDong.BackColor = Color.FromArgb(127, 140, 141);
-            btnDong.FlatStyle = FlatStyle.Flat;
-            btnDong.ForeColor = Color.White;
-            btnDong.Location = new Point(1057, 13);
-            btnDong.Name = "btnDong";
-            btnDong.Size = new Size(130, 35);
-            btnDong.TabIndex = 3;
-            btnDong.Text = "Dong";
-            btnDong.UseVisualStyleBackColor = false;
-            btnDong.Click += btnDong_Click;
-            
+            // 
+            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnDong.FlatAppearance.BorderSize = 0;
+            this.btnDong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.btnDong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))), ((int)(((byte)(220)))));
+            this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDong.ForeColor = System.Drawing.Color.White;
+            this.btnDong.Location = new System.Drawing.Point(957, 6);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(130, 35);
+            this.btnDong.TabIndex = 3;
+            this.btnDong.Text = "[x] Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
             // FormBaoCao
-            AutoScaleDimensions = new SizeF(8F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(236, 240, 241);
-            ClientSize = new Size(1200, 660);
-            Controls.Add(reportViewer);
-            Controls.Add(panelBottom);
-            Controls.Add(panelTop);
-            Font = new Font("Segoe UI", 10F);
-            Name = "FormBaoCao";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Bao cao va Xuat du lieu";
-            WindowState = FormWindowState.Maximized;
-            panelTop.ResumeLayout(false);
-            panelTop.PerformLayout();
-            panelBottom.ResumeLayout(false);
-            ResumeLayout(false);
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.ClientSize = new System.Drawing.Size(1100, 668);
+            this.Controls.Add(this.reportViewer);
+            this.Controls.Add(this.panelBottom);
+            this.Controls.Add(this.panelTop);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Name = "FormBaoCao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Báo cáo và Xuất dữ liệu";
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
+            this.panelBottom.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
     }
 }

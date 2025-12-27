@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormDonHang
     {
@@ -48,42 +51,52 @@
             // 
             // btnAdd
             // 
-            btnAdd.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnAdd.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnAdd.Image = null;
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(50, 24);
+            btnAdd.Size = new Size(70, 24);
             btnAdd.Text = "Thêm";
+            btnAdd.ToolTipText = "Thêm đơn hàng mới (Ctrl+N)";
             btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
-            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnEdit.Image = null;
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(38, 24);
+            btnEdit.Size = new Size(58, 24);
             btnEdit.Text = "Sửa";
+            btnEdit.ToolTipText = "Chỉnh sửa đơn hàng (Ctrl+E)";
             btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            btnDelete.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnDelete.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnDelete.Image = null;
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(39, 24);
+            btnDelete.Size = new Size(59, 24);
             btnDelete.Text = "Xóa";
+            btnDelete.ToolTipText = "Xóa đơn hàng (Delete)";
             btnDelete.Click += btnDelete_Click;
             // 
             // btnPrint
             // 
-            btnPrint.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnPrint.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnPrint.Image = null;
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(29, 24);
+            btnPrint.Size = new Size(49, 24);
             btnPrint.Text = "In";
+            btnPrint.ToolTipText = "In đơn hàng (Ctrl+P)";
             btnPrint.Click += btnPrint_Click;
             // 
             // btnExport
             // 
-            btnExport.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnExport.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnExport.Image = null;
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(81, 24);
+            btnExport.Size = new Size(101, 24);
             btnExport.Text = "Xuất Excel";
+            btnExport.ToolTipText = "Xuất dữ liệu ra Excel (Ctrl+X)";
             btnExport.Click += btnExport_Click;
             // 
             // txtSearch
@@ -93,10 +106,12 @@
             // 
             // btnSearch
             // 
-            btnSearch.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnSearch.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnSearch.Image = null;
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(38, 24);
-            btnSearch.Text = "Tìm";
+            btnSearch.Size = new Size(90, 24);
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.ToolTipText = "Tìm kiếm đơn hàng (Ctrl+F)";
             btnSearch.Click += btnSearch_Click;
             // 
             // dataGridView1

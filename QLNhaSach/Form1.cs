@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Linq;
+using QLNhaSach.Models;
 
 namespace QLNhaSach
 {
@@ -147,6 +149,38 @@ namespace QLNhaSach
         private void menuAdminXemNhatKy_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Chức năng xem nhật ký hoạt động đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // ========== QUICK ACCESS BUTTON EVENTS ==========
+        
+        private void btnQuanLySach_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormSach(_currentUser));
+        }
+
+        private void btnKhachHang_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormKhachHang(_currentUser));
+        }
+
+        private void btnDonHang_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormDonHang(_currentUser));
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormThongKe());
+        }
+
+        private void btnBaoCaoTonKho_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormTonKho());
+        }
+
+        private void btnNhapXuatKho_Click(object sender, EventArgs e)
+        {
+            ShowFormAndHide(new FormNhapXuatKho(_currentUser));
         }
 
         /// <summary>

@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
 using QLNhaSach.Models;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
+using ClosedXML.Excel;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using Word = DocumentFormat.OpenXml.Wordprocessing;
 
 namespace QLNhaSach
 {
@@ -12,44 +19,30 @@ namespace QLNhaSach
     {
         private readonly NguoiDung _currentUser;
 
-        public FormBaoCao(NguoiDung user = null)
+        public FormBaoCao(NguoiDung user)
         {
             InitializeComponent();
             _currentUser = user;
             this.Load += FormBaoCao_Load;
             this.ApplyVietnameseFont();
             UITheme.ApplyTheme(this);
-            
-            // Fix cho ReportViewer trong .NET Core/.NET 8
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         private void FormBaoCao_Load(object sender, EventArgs e)
         {
-            this.Text = "Bao cao va Xuat du lieu";
+            this.Text = "Báo cáo và Xuất dữ liệu";
             LoadComboBoxLoaiBaoCao();
-            
-            // Khoi tao ReportViewer
-            try
-            {
-                reportViewer.ProcessingMode = ProcessingMode.Local;
-                reportViewer.LocalReport.DataSources.Clear();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"ReportViewer init error: {ex.Message}");
-            }
         }
-
+        
         private void LoadComboBoxLoaiBaoCao()
         {
             cboLoaiBaoCao.Items.Clear();
-            cboLoaiBaoCao.Items.Add("Danh sach sach");
-            cboLoaiBaoCao.Items.Add("Danh sach khach hang");
-            cboLoaiBaoCao.Items.Add("Danh sach don hang");
-            cboLoaiBaoCao.Items.Add("Bao cao ton kho");
-            cboLoaiBaoCao.Items.Add("Bao cao doanh thu theo thang");
-            cboLoaiBaoCao.Items.Add("Bao cao doanh thu theo nam");
+            cboLoaiBaoCao.Items.Add("Danh sách sách");
+            cboLoaiBaoCao.Items.Add("Danh sách khách hàng");
+            cboLoaiBaoCao.Items.Add("Danh sách đơn hàng");
+            cboLoaiBaoCao.Items.Add("Báo cáo tồn kho");
+            cboLoaiBaoCao.Items.Add("Báo cáo doanh thu theo tháng");
+            cboLoaiBaoCao.Items.Add("Báo cáo doanh thu theo năm");
             cboLoaiBaoCao.SelectedIndex = 0;
         }
 
@@ -57,7 +50,7 @@ namespace QLNhaSach
         {
             if (cboLoaiBaoCao.SelectedIndex < 0)
             {
-                MessageBox.Show("Vui long chon loai bao cao!", "Thong bao", 
+                MessageBox.Show("Vui lòng chọn loại báo cáo!", "Thông báo", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -71,22 +64,22 @@ namespace QLNhaSach
                 {
                     switch (loaiBaoCao)
                     {
-                        case "Danh sach sach":
+                        case "Danh sách sách":
                             dataTable = GetDanhSachSach(db);
                             break;
-                        case "Danh sach khach hang":
+                        case "Danh sách khách hàng":
                             dataTable = GetDanhSachKhachHang(db);
                             break;
-                        case "Danh sach don hang":
+                        case "Danh sách đơn hàng":
                             dataTable = GetDanhSachDonHang(db);
                             break;
-                        case "Bao cao ton kho":
+                        case "Báo cáo tồn kho":
                             dataTable = GetBaoCaoTonKho(db);
                             break;
-                        case "Bao cao doanh thu theo thang":
+                        case "Báo cáo doanh thu theo tháng":
                             dataTable = GetDoanhThuTheoThang(db);
                             break;
-                        case "Bao cao doanh thu theo nam":
+                        case "Báo cáo doanh thu theo năm":
                             dataTable = GetDoanhThuTheoNam(db);
                             break;
                     }
@@ -94,17 +87,19 @@ namespace QLNhaSach
 
                 if (dataTable != null && dataTable.Rows.Count > 0)
                 {
-                    HienThiBaoCao(dataTable, loaiBaoCao);
+                    // Hien thi bang ReportViewer thay vi DataGridView
+                    ReportHelper.CreateSimpleReport(reportViewer, dataTable, loaiBaoCao);
+                    reportViewer.BringToFront();
                 }
                 else
                 {
-                    MessageBox.Show("Khong co du lieu de hien thi bao cao!", "Thong bao",
+                    MessageBox.Show("Không có dữ liệu để hiển thị báo cáo!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Loi khi tao bao cao: {ex.Message}", "Loi",
+                MessageBox.Show($"Lỗi khi tạo báo cáo: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -112,8 +107,8 @@ namespace QLNhaSach
         private DataTable GetDanhSachSach(QuanLyNhaSachContext db)
         {
             var data = db.Saches
-                .Include(s => s.TheLoai)
-                .Include(s => s.NhaXuatBan)
+                .Include("TheLoai")
+                .Include("NhaXuatBan")
                 .Select(s => new
                 {
                     s.MaSach,
@@ -180,7 +175,7 @@ namespace QLNhaSach
         private DataTable GetDanhSachDonHang(QuanLyNhaSachContext db)
         {
             var data = db.DonHangs
-                .Include(d => d.KhachHang)
+                .Include("KhachHang")
                 .Select(d => new
                 {
                     d.MaDonHang,
@@ -210,7 +205,7 @@ namespace QLNhaSach
         private DataTable GetBaoCaoTonKho(QuanLyNhaSachContext db)
         {
             var data = db.Saches
-                .Include(s => s.TheLoai)
+                .Include("TheLoai")
                 .Select(s => new
                 {
                     s.MaSach,
@@ -295,167 +290,22 @@ namespace QLNhaSach
 
             return dt;
         }
-
-        private void HienThiBaoCao(DataTable dataTable, string tenBaoCao)
-        {
-            try
-            {
-                // Thay vi dung ReportViewer, hien thi du lieu trong DataGridView
-                // Vi ReportViewer can file RDLC phuc tap
-                ShowDataInGrid(dataTable, tenBaoCao);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi hiển thị báo cáo! {ex.Message}", "Loi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         
-        private void ShowDataInGrid(DataTable dataTable, string tenBaoCao)
-        {
-            // An ReportViewer, hien DataGridView
-            reportViewer.Visible = false;
-            
-            // Tao DataGridView de hien thi du lieu
-            if (!this.Controls.ContainsKey("dgvBaoCao"))
-            {
-                DataGridView dgvBaoCao = new DataGridView();
-                dgvBaoCao.Name = "dgvBaoCao";
-                dgvBaoCao.Dock = DockStyle.Fill;
-                dgvBaoCao.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvBaoCao.ReadOnly = true;
-                dgvBaoCao.AllowUserToAddRows = false;
-                dgvBaoCao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dgvBaoCao.BackgroundColor = Color.White;
-                dgvBaoCao.BorderStyle = BorderStyle.None;
-                
-                // Ap dung theme
-                UITheme.StyleDataGridView(dgvBaoCao);
-                dgvBaoCao.ApplyVietnameseFont();
-                
-                this.Controls.Add(dgvBaoCao);
-                dgvBaoCao.BringToFront();
-                panelBottom.BringToFront();
-            }
-            
-            DataGridView dgv = this.Controls["dgvBaoCao"] as DataGridView;
-            if (dgv != null)
-            {
-                dgv.DataSource = dataTable;
-                dgv.Visible = true;
-                
-                // Ap dung header tieng Viet
-                GridHelper.ApplyVietnameseColumnHeaders(dgv);
-            }
-        }
-
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportToExcel();
+            ReportHelper.ExportToExcel(reportViewer, "BaoCao_" + cboLoaiBaoCao.Text.Replace(" ", "_"));
         }
 
         private void btnXuatPDF_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chuc nang xuat PDF se duoc trien khai sau!", "Thong bao",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ReportHelper.ExportToPDF(reportViewer, "BaoCao_" + cboLoaiBaoCao.Text.Replace(" ", "_"));
         }
 
         private void btnXuatWord_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chuc nang xuat Word se duoc trien khai sau!", "Thong bao",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ReportHelper.ExportToWord(reportViewer, "BaoCao_" + cboLoaiBaoCao.Text.Replace(" ", "_"));
         }
         
-        private void ExportToExcel()
-        {
-            try
-            {
-                DataGridView dgv = this.Controls["dgvBaoCao"] as DataGridView;
-                if (dgv == null || dgv.DataSource == null)
-                {
-                    MessageBox.Show("Vui long tao bao cao truoc khi xuat!", "Thong bao",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                
-                DataTable dt = dgv.DataSource as DataTable;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Khong co du lieu de xuat!", "Thong bao",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                
-                SaveFileDialog saveDialog = new SaveFileDialog();
-                saveDialog.Filter = "Excel Files|*.xlsx";
-                saveDialog.FileName = $"BaoCao_{cboLoaiBaoCao.Text}_{DateTime.Now:yyyyMMdd_HHmmss}";
-                
-                if (saveDialog.ShowDialog() == DialogResult.OK)
-                {
-                    using (var workbook = new ClosedXML.Excel.XLWorkbook())
-                    {
-                        var worksheet = workbook.Worksheets.Add("Bao cao");
-                        
-                        // Tieu de
-                        worksheet.Cell(1, 1).Value = cboLoaiBaoCao.Text.ToUpper();
-                        worksheet.Cell(1, 1).Style.Font.Bold = true;
-                        worksheet.Cell(1, 1).Style.Font.FontSize = 16;
-                        worksheet.Range(1, 1, 1, dt.Columns.Count).Merge();
-                        worksheet.Range(1, 1, 1, dt.Columns.Count).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
-                        
-                        // Ngay tao
-                        worksheet.Cell(2, 1).Value = $"Ngay tao: {DateTime.Now:dd/MM/yyyy HH:mm}";
-                        worksheet.Range(2, 1, 2, dt.Columns.Count).Merge();
-                        
-                        // Headers
-                        int startRow = 4;
-                        for (int i = 0; i < dt.Columns.Count; i++)
-                        {
-                            var cell = worksheet.Cell(startRow, i + 1);
-                            cell.Value = dgv.Columns[i].HeaderText;
-                            cell.Style.Font.Bold = true;
-                            cell.Style.Fill.BackgroundColor = ClosedXML.Excel.XLColor.LightBlue;
-                            cell.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
-                        }
-                        
-                        // Data
-                        for (int i = 0; i < dt.Rows.Count; i++)
-                        {
-                            for (int j = 0; j < dt.Columns.Count; j++)
-                            {
-                                var cell = worksheet.Cell(startRow + 1 + i, j + 1);
-                                cell.Value = dt.Rows[i][j]?.ToString() ?? "";
-                                cell.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
-                            }
-                        }
-                        
-                        // Auto-fit columns
-                        worksheet.Columns().AdjustToContents();
-                        
-                        workbook.SaveAs(saveDialog.FileName);
-                    }
-                    
-                    MessageBox.Show($"Xuat Excel thanh cong!\nFile: {saveDialog.FileName}",
-                        "Thanh cong", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    if (MessageBox.Show("Ban co muon mo file vua xuat?", "Xac nhan",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = saveDialog.FileName,
-                            UseShellExecute = true
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Loi khi xuat Excel: {ex.Message}", "Loi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();

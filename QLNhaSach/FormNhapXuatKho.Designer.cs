@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormNhapXuatKho
     {
@@ -216,10 +219,10 @@
         private System.Windows.Forms.Button btnXuatKho;
         private System.Windows.Forms.Label lblWarning;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

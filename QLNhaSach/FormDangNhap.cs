@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {
@@ -93,39 +92,49 @@ namespace QLNhaSach
 
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
-            var ten = txtTenDangNhap.Text.Trim();
-            var mk = txtMatKhau.Text;
-            if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(mk))
+            try
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu.");
-                this.DialogResult = DialogResult.None;
-                return;
-            }
-            
-            using var db = new QuanLyNhaSachContext();
-            // Load Role cùng với NguoiDung để kiểm tra quyền truy cập
-            var user = db.NguoiDungs
-                .Include(u => u.Role)
-                .FirstOrDefault(u => u.TenDangNhap == ten && u.KichHoat);
-            
-            if (user == null)
-            {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản bị khóa.");
-                this.DialogResult = DialogResult.None;
-                return;
-            }
+                var ten = txtTenDangNhap.Text.Trim();
+                var mk = txtMatKhau.Text;
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(mk))
+                {
+                    MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu.");
+                    this.DialogResult = DialogResult.None;
+                    return;
+                }
+                
+                using (var db = new QuanLyNhaSachContext())
+                {
+                    // Load Role cùng với NguoiDung để kiểm tra quyền truy cập
+                    var user = db.NguoiDungs
+                        .Include("Role")
+                        .FirstOrDefault(u => u.TenDangNhap == ten && u.KichHoat);
+                    
+                    if (user == null)
+                    {
+                        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản bị khóa.");
+                        this.DialogResult = DialogResult.None;
+                        return;
+                    }
 
-            // Verify mật khẩu với salt
-            if (!PasswordHelper.VerifyPassword(mk, user.MatKhauHash, user.PasswordSalt))
-            {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản bị khóa.");
-                this.DialogResult = DialogResult.None;
-                return;
-            }
+                    // Verify mật khẩu với salt
+                    if (!PasswordHelper.VerifyPassword(mk, user.MatKhauHash, user.PasswordSalt))
+                    {
+                        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản bị khóa.");
+                        this.DialogResult = DialogResult.None;
+                        return;
+                    }
 
-            DangNhapThanhCong = user;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                    DangNhapThanhCong = user;
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi đăng nhập: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.None;
+            }
         }
     }
 }

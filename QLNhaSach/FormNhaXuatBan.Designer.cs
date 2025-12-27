@@ -1,4 +1,7 @@
-﻿namespace QLNhaSach
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QLNhaSach
 {
     partial class FormNhaXuatBan
     {
@@ -48,26 +51,32 @@
             // 
             // btnAdd
             // 
-            btnAdd.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnAdd.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnAdd.Image = null;
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(50, 24);
+            btnAdd.Size = new Size(70, 24);
             btnAdd.Text = "Thêm";
+            btnAdd.ToolTipText = "Thêm nhà xuất bản mới (Ctrl+N)";
             btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
-            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnEdit.Image = null;
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(38, 24);
+            btnEdit.Size = new Size(58, 24);
             btnEdit.Text = "Sửa";
+            btnEdit.ToolTipText = "Chỉnh sửa nhà xuất bản (Ctrl+E)";
             btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            btnDelete.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnDelete.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            btnDelete.Image = null;
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(39, 24);
+            btnDelete.Size = new Size(59, 24);
             btnDelete.Text = "Xóa";
+            btnDelete.ToolTipText = "Xóa nhà xuất bản (Delete)";
             btnDelete.Click += btnDelete_Click;
             // 
             // btnExport

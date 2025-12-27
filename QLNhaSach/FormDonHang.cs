@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using QLNhaSach.Models;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Data.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace QLNhaSach
 {
@@ -18,8 +17,41 @@ namespace QLNhaSach
             InitializeComponent();
             this.ApplyVietnameseFont();
             UITheme.ApplyTheme(this);
+            StyleToolbar();
             LoadData();
             ApplyPermissions();
+        }
+
+        /// <summary>
+        /// Style the toolbar for professional appearance
+        /// </summary>
+        private void StyleToolbar()
+        {
+            if (toolStrip1 != null)
+            {
+                toolStrip1.ImageScalingSize = new Size(16, 16);
+                toolStrip1.RenderMode = ToolStripRenderMode.Professional;
+            }
+        }
+
+        /// <summary>
+        /// Create a simple colored icon
+        /// </summary>
+        private static Image CreateColorIcon(Color color, int width, int height)
+        {
+            var bitmap = new Bitmap(width, height);
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                using (var brush = new SolidBrush(color))
+                {
+                    g.FillEllipse(brush, 2, 2, width - 4, height - 4);
+                }
+                using (var pen = new Pen(Color.DarkGray))
+                {
+                    g.DrawEllipse(pen, 2, 2, width - 4, height - 4);
+                }
+            }
+            return bitmap;
         }
 
         /// <summary>
@@ -79,7 +111,7 @@ namespace QLNhaSach
                 {
                     // Fallback: read with raw ADO.NET and safe DBNull checks
                     var listFallback = new System.Collections.Generic.List<DonHangRow>();
-                    var conn = db.Database.GetDbConnection();
+                    var conn = db.Database.Connection;
                     try
                     {
                         if (conn.State != System.Data.ConnectionState.Open) conn.Open();

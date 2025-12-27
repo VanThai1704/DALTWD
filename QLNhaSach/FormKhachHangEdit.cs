@@ -14,6 +14,7 @@ namespace QLNhaSach
             _id = id;
             InitializeComponent();
             this.ApplyVietnameseFont();
+            UITheme.ApplyTheme(this);
             if (!string.IsNullOrEmpty(_id)) LoadData();
             this.btnOK.Click += BtnOK_Click;
         }

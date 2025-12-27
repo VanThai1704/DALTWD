@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLNhaSach.Models
 {
@@ -98,6 +100,10 @@ namespace QLNhaSach.Models
 
     public class QuanLyNhaSachContext : DbContext
     {
+        public QuanLyNhaSachContext() : base("Server=.;Database=QuanLyNhaSach;Trusted_Connection=True;TrustServerCertificate=True;")
+        {
+        }
+
         public DbSet<TheLoai> TheLoais { get; set; }
         public DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public DbSet<Sach> Saches { get; set; }
@@ -110,15 +116,9 @@ namespace QLNhaSach.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<NguoiDungRole> NguoiDungRoles { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Connection string den database QuanLyNhaSach
-            optionsBuilder.UseSqlServer("Server=.;Database=QuanLyNhaSach;Trusted_Connection=True;TrustServerCertificate=True;");
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // C?u hình tên b?ng trong database
+            // Cấu hình tên bảng trong database
             modelBuilder.Entity<TheLoai>().ToTable("TheLoai");
             modelBuilder.Entity<NhaXuatBan>().ToTable("NhaXuatBan");
             modelBuilder.Entity<Sach>().ToTable("Sach");
@@ -127,8 +127,11 @@ namespace QLNhaSach.Models
             modelBuilder.Entity<ChiTietDonHang>().ToTable("ChiTietDonHang");
             modelBuilder.Entity<HoaDon>().ToTable("HoaDon");
             modelBuilder.Entity<TonKho>().ToTable("TonKho");
+            modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<NguoiDung>().ToTable("NguoiDung");
+            modelBuilder.Entity<NguoiDungRole>().ToTable("NguoiDungRole");
 
-            // C?u hình khóa chính
+            // Cấu hình khóa chính
             modelBuilder.Entity<TheLoai>().HasKey(t => t.MaTheLoai);
             modelBuilder.Entity<NhaXuatBan>().HasKey(n => n.MaNXB);
             modelBuilder.Entity<Sach>().HasKey(s => s.MaSach);
@@ -137,8 +140,11 @@ namespace QLNhaSach.Models
             modelBuilder.Entity<ChiTietDonHang>().HasKey(c => c.MaChiTiet);
             modelBuilder.Entity<HoaDon>().HasKey(h => h.MaHoaDon);
             modelBuilder.Entity<TonKho>().HasKey(t => t.MaGiaoDich);
+            modelBuilder.Entity<Role>().HasKey(r => r.RoleId);
+            modelBuilder.Entity<NguoiDung>().HasKey(n => n.NguoiDungId);
+            modelBuilder.Entity<NguoiDungRole>().HasKey(nr => new { nr.NguoiDungId, nr.RoleId });
 
-            // C?u hình ki?u d? li?u cho các c?t text (nvarchar)
+            // Cấu hình kiểu dữ liệu cho các cột text (nvarchar)
             // TheLoai
             modelBuilder.Entity<TheLoai>().Property(t => t.MaTheLoai).HasMaxLength(10).IsRequired();
             modelBuilder.Entity<TheLoai>().Property(t => t.TenTheLoai).HasMaxLength(100).IsRequired();
@@ -157,7 +163,6 @@ namespace QLNhaSach.Models
             modelBuilder.Entity<Sach>().Property(s => s.MaTheLoai).HasMaxLength(10);
             modelBuilder.Entity<Sach>().Property(s => s.MaNXB).HasMaxLength(10);
             modelBuilder.Entity<Sach>().Property(s => s.TacGia).HasMaxLength(200);
-            modelBuilder.Entity<Sach>().Property(s => s.GiaBan).HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<Sach>().Property(s => s.MoTa).HasMaxLength(1000);
 
             // KhachHang
@@ -170,20 +175,16 @@ namespace QLNhaSach.Models
             // DonHang
             modelBuilder.Entity<DonHang>().Property(d => d.MaDonHang).HasMaxLength(10).IsRequired();
             modelBuilder.Entity<DonHang>().Property(d => d.MaKH).HasMaxLength(10);
-            modelBuilder.Entity<DonHang>().Property(d => d.TongTien).HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<DonHang>().Property(d => d.TrangThai).HasMaxLength(50);
             modelBuilder.Entity<DonHang>().Property(d => d.GhiChu).HasMaxLength(500);
 
             // ChiTietDonHang
             modelBuilder.Entity<ChiTietDonHang>().Property(c => c.MaDonHang).HasMaxLength(10);
             modelBuilder.Entity<ChiTietDonHang>().Property(c => c.MaSach).HasMaxLength(10);
-            modelBuilder.Entity<ChiTietDonHang>().Property(c => c.DonGia).HasColumnType("decimal(18, 2)");
-            modelBuilder.Entity<ChiTietDonHang>().Property(c => c.ThanhTien).HasColumnType("decimal(18, 2)");
 
             // HoaDon
             modelBuilder.Entity<HoaDon>().Property(h => h.MaHoaDon).HasMaxLength(10).IsRequired();
             modelBuilder.Entity<HoaDon>().Property(h => h.MaDonHang).HasMaxLength(10);
-            modelBuilder.Entity<HoaDon>().Property(h => h.TongTien).HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<HoaDon>().Property(h => h.PhuongThucThanhToan).HasMaxLength(50);
 
             // TonKho
@@ -192,85 +193,66 @@ namespace QLNhaSach.Models
             modelBuilder.Entity<TonKho>().Property(t => t.GhiChu).HasMaxLength(300);
 
             // Role
-            modelBuilder.Entity<Role>().ToTable("Role");
-            modelBuilder.Entity<Role>().HasKey(r => r.RoleId);
             modelBuilder.Entity<Role>().Property(r => r.RoleName).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Role>().Property(r => r.MoTa).HasMaxLength(500);
 
             // NguoiDung
-            modelBuilder.Entity<NguoiDung>().ToTable("NguoiDung");
-            modelBuilder.Entity<NguoiDung>().HasKey(n => n.NguoiDungId);
             modelBuilder.Entity<NguoiDung>().Property(n => n.TenDangNhap).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<NguoiDung>().Property(n => n.MatKhauHash).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<NguoiDung>().Property(n => n.PasswordSalt).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<NguoiDung>().Property(n => n.HoTen).HasMaxLength(200);
 
-            // NguoiDungRole
-            modelBuilder.Entity<NguoiDungRole>().ToTable("NguoiDungRole");
-            modelBuilder.Entity<NguoiDungRole>().HasKey(nr => new { nr.NguoiDungId, nr.RoleId });
-            modelBuilder.Entity<NguoiDungRole>().Property(nr => nr.NgayGan).HasDefaultValueSql("GETDATE()");
-
-            // C?u hình quan h?
+            // Cấu hình quan hệ
             modelBuilder.Entity<Sach>()
-                .HasOne(s => s.TheLoai)
+                .HasOptional(s => s.TheLoai)
                 .WithMany(t => t.Saches)
-                .HasForeignKey(s => s.MaTheLoai)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(s => s.MaTheLoai);
 
             modelBuilder.Entity<Sach>()
-                .HasOne(s => s.NhaXuatBan)
+                .HasOptional(s => s.NhaXuatBan)
                 .WithMany(n => n.Saches)
-                .HasForeignKey(s => s.MaNXB)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(s => s.MaNXB);
 
             modelBuilder.Entity<DonHang>()
-                .HasOne(d => d.KhachHang)
+                .HasOptional(d => d.KhachHang)
                 .WithMany(k => k.DonHangs)
-                .HasForeignKey(d => d.MaKH)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(d => d.MaKH);
 
             modelBuilder.Entity<ChiTietDonHang>()
-                .HasOne(c => c.DonHang)
+                .HasOptional(c => c.DonHang)
                 .WithMany(d => d.ChiTietDonHangs)
-                .HasForeignKey(c => c.MaDonHang)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(c => c.MaDonHang);
 
             modelBuilder.Entity<ChiTietDonHang>()
-                .HasOne(c => c.Sach)
+                .HasOptional(c => c.Sach)
                 .WithMany(s => s.ChiTietDonHangs)
-                .HasForeignKey(c => c.MaSach)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(c => c.MaSach);
 
             modelBuilder.Entity<HoaDon>()
-                .HasOne(h => h.DonHang)
+                .HasOptional(h => h.DonHang)
                 .WithMany(d => d.HoaDons)
-                .HasForeignKey(h => h.MaDonHang)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(h => h.MaDonHang);
 
             modelBuilder.Entity<TonKho>()
-                .HasOne(t => t.Sach)
+                .HasOptional(t => t.Sach)
                 .WithMany(s => s.TonKhos)
-                .HasForeignKey(t => t.MaSach)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(t => t.MaSach);
 
             modelBuilder.Entity<NguoiDung>()
-                .HasOne(n => n.Role)
+                .HasOptional(n => n.Role)
                 .WithMany(r => r.NguoiDungs)
-                .HasForeignKey(n => n.RoleId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(n => n.RoleId);
 
             // NguoiDungRole relationships
             modelBuilder.Entity<NguoiDungRole>()
-                .HasOne(nr => nr.NguoiDung)
+                .HasRequired(nr => nr.NguoiDung)
                 .WithMany(n => n.NguoiDungRoles)
-                .HasForeignKey(nr => nr.NguoiDungId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(nr => nr.NguoiDungId);
 
             modelBuilder.Entity<NguoiDungRole>()
-                .HasOne(nr => nr.Role)
+                .HasRequired(nr => nr.Role)
                 .WithMany(r => r.NguoiDungRoles)
-                .HasForeignKey(nr => nr.RoleId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(nr => nr.RoleId);
         }
     }
 }
@@ -292,7 +274,7 @@ public class NguoiDung
     public string MatKhauHash { get; set; }
     public string PasswordSalt { get; set; } // Salt ngẫu nhiên cho mỗi user
     public string HoTen { get; set; }
-    public int RoleId { get; set; } // Primary role (backward compatibility)
+    public int? RoleId { get; set; } // Primary role (backward compatibility)
     public Role Role { get; set; }
     public bool KichHoat { get; set; }
     public System.Collections.Generic.ICollection<NguoiDungRole> NguoiDungRoles { get; set; }

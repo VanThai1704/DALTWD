@@ -11,7 +11,7 @@ namespace QLNhaSach
             // Ensure header visual styles disabled so custom fonts/styles apply
             dgv.EnableHeadersVisualStyles = false;
 
-            void ApplyHeaders(object? sender, DataGridViewBindingCompleteEventArgs e)
+            void ApplyHeaders(object sender, DataGridViewBindingCompleteEventArgs e)
             {
                 if (dgv != null && dgv.Columns != null && dgv.Columns.Count > 0)
                 {
@@ -21,7 +21,7 @@ namespace QLNhaSach
                 }
             }
 
-            void OnColumnAdded(object? sender, DataGridViewColumnEventArgs e)
+            void OnColumnAdded(object sender, DataGridViewColumnEventArgs e)
             {
                 if (dgv != null && dgv.Columns != null && dgv.Columns.Count > 0)
                 {
@@ -29,7 +29,7 @@ namespace QLNhaSach
                 }
             }
 
-            void OnDataSourceChanged(object? sender, EventArgs e)
+            void OnDataSourceChanged(object sender, EventArgs e)
             {
                 if (dgv != null && dgv.Columns != null && dgv.Columns.Count > 0)
                 {
