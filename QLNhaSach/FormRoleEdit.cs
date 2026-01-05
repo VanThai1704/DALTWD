@@ -36,12 +36,18 @@ namespace QLNhaSach
         {
             try
             {
-                using var db = new QuanLyNhaSachContext();
-                var role = db.Roles.Find(_id.Value);
-                if (role == null) return;
+                using (var db = new QuanLyNhaSachContext())
+                {
+                    var role = db.Roles.Find(_id.Value);
+                    if (role == null) return;
 
-                txtRoleName.Text = role.RoleName;
-                txtMoTa.Text = role.MoTa;
+                    txtRoleName.Text = role.RoleName;
+                    txtMoTa.Text = role.MoTa;
+                    // Gán quyền hiện tại
+                    chkQuyenDoc.Checked = role.QuyenDoc;
+                    chkQuyenXem.Checked = role.QuyenXem;
+                    chkQuyenSua.Checked = role.QuyenSua;
+                }
             }
             catch (Exception ex)
             {
@@ -60,42 +66,49 @@ namespace QLNhaSach
 
             try
             {
-                using var db = new QuanLyNhaSachContext();
-
-                if (!_id.HasValue)
+                using (var db = new QuanLyNhaSachContext())
                 {
-                    // Kiểm tra trùng tên role
-                    if (db.Roles.Any(r => r.RoleName == txtRoleName.Text.Trim()))
+                    if (!_id.HasValue)
                     {
-                        MessageBox.Show("Tên vai trò đã tồn tại!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        this.DialogResult = DialogResult.None;
-                        return;
-                    }
-
-                    var role = new Role
-                    {
-                        RoleName = txtRoleName.Text.Trim(),
-                        MoTa = txtMoTa.Text.Trim()
-                    };
-                    db.Roles.Add(role);
-                }
-                else
-                {
-                    var role = db.Roles.Find(_id.Value);
-                    if (role != null)
-                    {
-                        // Chỉ cho phép sửa RoleName nếu không phải role hệ thống
-                        if (_id.Value > 3)
+                        // Kiểm tra trùng tên role
+                        if (db.Roles.Any(r => r.RoleName == txtRoleName.Text.Trim()))
                         {
-                            role.RoleName = txtRoleName.Text.Trim();
+                            MessageBox.Show("Tên vai trò đã tồn tại!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            this.DialogResult = DialogResult.None;
+                            return;
                         }
-                        role.MoTa = txtMoTa.Text.Trim();
-                    }
-                }
 
-                db.SaveChanges();
-                MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK; // Thêm dòng này để đóng form khi lưu xong
+                        var role = new Role
+                        {
+                            RoleName = txtRoleName.Text.Trim(),
+                            MoTa = txtMoTa.Text.Trim(),
+                            QuyenDoc = chkQuyenDoc.Checked,
+                            QuyenXem = chkQuyenXem.Checked,
+                            QuyenSua = chkQuyenSua.Checked
+                        };
+                        db.Roles.Add(role);
+                    }
+                    else
+                    {
+                        var role = db.Roles.Find(_id.Value);
+                        if (role != null)
+                        {
+                            // Chỉ cho phép sửa RoleName nếu không phải role hệ thống
+                            if (_id.Value > 3)
+                            {
+                                role.RoleName = txtRoleName.Text.Trim();
+                            }
+                            role.MoTa = txtMoTa.Text.Trim();
+                            role.QuyenDoc = chkQuyenDoc.Checked;
+                            role.QuyenXem = chkQuyenXem.Checked;
+                            role.QuyenSua = chkQuyenSua.Checked;
+                        }
+                    }
+
+                    db.SaveChanges();
+                    MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK; // Thêm dòng này để đóng form khi lưu xong
+                }
             }
             catch (Exception ex)
             {

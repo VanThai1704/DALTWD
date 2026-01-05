@@ -151,6 +151,21 @@ namespace QLNhaSach
             MessageBox.Show("Chức năng xem nhật ký hoạt động đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void menuDangXuat_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Bạn có chắc chắn muốn đăng xuất không?",
+                "Đăng xuất",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            // Restart toàn bộ ứng dụng: quay lại từ Program.Main, hiển thị lại màn hình đăng nhập
+            Application.Restart();
+        }
+
         // ========== QUICK ACCESS BUTTON EVENTS ==========
         
         private void btnQuanLySach_Click(object sender, EventArgs e)

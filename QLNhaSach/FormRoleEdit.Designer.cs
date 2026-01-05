@@ -22,6 +22,9 @@ namespace QLNhaSach
             txtRoleName = new TextBox();
             lblMoTa = new Label();
             txtMoTa = new TextBox();
+            chkQuyenDoc = new CheckBox();
+            chkQuyenXem = new CheckBox();
+            chkQuyenSua = new CheckBox();
             btnOK = new Button();
             btnCancel = new Button();
             SuspendLayout();
@@ -61,23 +64,53 @@ namespace QLNhaSach
             txtMoTa.Size = new Size(300, 120);
             txtMoTa.TabIndex = 3;
             // 
+            // chkQuyenDoc
+            // 
+            chkQuyenDoc.AutoSize = true;
+            chkQuyenDoc.Location = new Point(150, 200);
+            chkQuyenDoc.Name = "chkQuyenDoc";
+            chkQuyenDoc.Size = new Size(107, 22);
+            chkQuyenDoc.TabIndex = 4;
+            chkQuyenDoc.Text = "Quyền đọc";
+            chkQuyenDoc.UseVisualStyleBackColor = true;
+            // 
+            // chkQuyenXem
+            // 
+            chkQuyenXem.AutoSize = true;
+            chkQuyenXem.Location = new Point(270, 200);
+            chkQuyenXem.Name = "chkQuyenXem";
+            chkQuyenXem.Size = new Size(111, 22);
+            chkQuyenXem.TabIndex = 5;
+            chkQuyenXem.Text = "Quyền xem";
+            chkQuyenXem.UseVisualStyleBackColor = true;
+            // 
+            // chkQuyenSua
+            // 
+            chkQuyenSua.AutoSize = true;
+            chkQuyenSua.Location = new Point(390, 200);
+            chkQuyenSua.Name = "chkQuyenSua";
+            chkQuyenSua.Size = new Size(102, 22);
+            chkQuyenSua.TabIndex = 6;
+            chkQuyenSua.Text = "Quyền sửa";
+            chkQuyenSua.UseVisualStyleBackColor = true;
+            // 
             // btnOK
             // 
             btnOK.DialogResult = DialogResult.OK;
-            btnOK.Location = new Point(150, 210);
+            btnOK.Location = new Point(150, 240);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(100, 35);
-            btnOK.TabIndex = 4;
+            btnOK.TabIndex = 7;
             btnOK.Text = "Lưu";
             btnOK.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(270, 210);
+            btnCancel.Location = new Point(270, 240);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(100, 35);
-            btnCancel.TabIndex = 5;
+            btnCancel.TabIndex = 8;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -85,7 +118,10 @@ namespace QLNhaSach
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(480, 270);
+            ClientSize = new Size(520, 300);
+            Controls.Add(chkQuyenSua);
+            Controls.Add(chkQuyenXem);
+            Controls.Add(chkQuyenDoc);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
             Controls.Add(txtMoTa);
@@ -109,5 +145,8 @@ namespace QLNhaSach
         private System.Windows.Forms.TextBox txtMoTa;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chkQuyenDoc;
+        private System.Windows.Forms.CheckBox chkQuyenXem;
+        private System.Windows.Forms.CheckBox chkQuyenSua;
     }
 }

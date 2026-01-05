@@ -263,6 +263,10 @@ public class Role
     public int RoleId { get; set; }
     public string RoleName { get; set; }
     public string MoTa { get; set; }
+    // Quyền cơ bản cho từng role
+    public bool QuyenDoc { get; set; }
+    public bool QuyenXem { get; set; }
+    public bool QuyenSua { get; set; }
     public System.Collections.Generic.ICollection<NguoiDung> NguoiDungs { get; set; }
     public System.Collections.Generic.ICollection<NguoiDungRole> NguoiDungRoles { get; set; }
 }

@@ -48,7 +48,7 @@ namespace QLNhaSach
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuAdminCauHinhHeThong = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAdminXemNhatKy = new System.Windows.Forms.ToolStripMenuItem();
-            this.xuấtBáoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.panelWelcome = new System.Windows.Forms.Panel();
             this.lblSystemInfo = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
@@ -97,7 +97,7 @@ namespace QLNhaSach
             this.toolStripSeparator1,
             this.menuAdminCauHinhHeThong,
             this.menuAdminXemNhatKy,
-            this.xuấtBáoCáoToolStripMenuItem});
+            this.menuDangXuat});
             this.menuChucNang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.menuChucNang.ForeColor = System.Drawing.Color.White;
             this.menuChucNang.Name = "menuChucNang";
@@ -232,11 +232,14 @@ namespace QLNhaSach
             this.menuAdminXemNhatKy.Visible = false;
             this.menuAdminXemNhatKy.Click += new System.EventHandler(this.menuAdminXemNhatKy_Click);
             // 
-            // xuấtBáoCáoToolStripMenuItem
+            // menuDangXuat
             // 
-            this.xuấtBáoCáoToolStripMenuItem.Name = "xuấtBáoCáoToolStripMenuItem";
-            this.xuấtBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
-            this.xuấtBáoCáoToolStripMenuItem.Text = "📄 Xuất Báo Cáo";
+            this.menuDangXuat.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.menuDangXuat.ForeColor = System.Drawing.Color.Black;
+            this.menuDangXuat.Name = "menuDangXuat";
+            this.menuDangXuat.Size = new System.Drawing.Size(296, 28);
+            this.menuDangXuat.Text = "⏻ Đăng xuất";
+            this.menuDangXuat.Click += new System.EventHandler(this.menuDangXuat_Click);
             // 
             // panelWelcome
             // 
@@ -454,7 +457,7 @@ namespace QLNhaSach
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnBaoCaoTonKho;
         private System.Windows.Forms.Button btnNhapXuatKho;
-        private ToolStripMenuItem xuấtBáoCáoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuDangXuat;
     }
 }
 

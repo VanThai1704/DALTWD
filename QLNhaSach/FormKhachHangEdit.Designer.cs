@@ -22,151 +22,152 @@ namespace QLNhaSach
 
         private void InitializeComponent()
         {
-            lblMaKH = new Label();
-            txtMaKH = new TextBox();
-            lblTenKH = new Label();
-            txtTenKH = new TextBox();
-            lblDiaChi = new Label();
-            txtDiaChi = new TextBox();
-            lblSoDienThoai = new Label();
-            txtSoDienThoai = new TextBox();
-            lblEmail = new Label();
-            txtEmail = new TextBox();
-            lblNgayDangKy = new Label();
-            dtpNgayDangKy = new DateTimePicker();
-            btnOK = new Button();
-            btnCancel = new Button();
-            SuspendLayout();
+            this.lblMaKH = new System.Windows.Forms.Label();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
+            this.lblTenKH = new System.Windows.Forms.Label();
+            this.txtTenKH = new System.Windows.Forms.TextBox();
+            this.lblDiaChi = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.lblSoDienThoai = new System.Windows.Forms.Label();
+            this.txtSoDienThoai = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblNgayDangKy = new System.Windows.Forms.Label();
+            this.dtpNgayDangKy = new System.Windows.Forms.DateTimePicker();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // lblMaKH
             // 
-            lblMaKH.Location = new Point(10, 10);
-            lblMaKH.Name = "lblMaKH";
-            lblMaKH.Size = new Size(100, 23);
-            lblMaKH.TabIndex = 0;
-            lblMaKH.Text = "Mã KH";
+            this.lblMaKH.Location = new System.Drawing.Point(10, 10);
+            this.lblMaKH.Name = "lblMaKH";
+            this.lblMaKH.Size = new System.Drawing.Size(100, 23);
+            this.lblMaKH.TabIndex = 0;
+            this.lblMaKH.Text = "Mã KH";
             // 
             // txtMaKH
             // 
-            txtMaKH.Location = new Point(120, 10);
-            txtMaKH.Name = "txtMaKH";
-            txtMaKH.Size = new Size(220, 27);
-            txtMaKH.TabIndex = 1;
+            this.txtMaKH.Location = new System.Drawing.Point(120, 10);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.Size = new System.Drawing.Size(220, 22);
+            this.txtMaKH.TabIndex = 1;
             // 
             // lblTenKH
             // 
-            lblTenKH.Location = new Point(10, 40);
-            lblTenKH.Name = "lblTenKH";
-            lblTenKH.Size = new Size(100, 23);
-            lblTenKH.TabIndex = 2;
-            lblTenKH.Text = "Tên KH";
+            this.lblTenKH.Location = new System.Drawing.Point(10, 40);
+            this.lblTenKH.Name = "lblTenKH";
+            this.lblTenKH.Size = new System.Drawing.Size(100, 23);
+            this.lblTenKH.TabIndex = 2;
+            this.lblTenKH.Text = "Tên KH";
             // 
             // txtTenKH
             // 
-            txtTenKH.Location = new Point(120, 40);
-            txtTenKH.Name = "txtTenKH";
-            txtTenKH.Size = new Size(220, 27);
-            txtTenKH.TabIndex = 3;
+            this.txtTenKH.Location = new System.Drawing.Point(120, 40);
+            this.txtTenKH.Name = "txtTenKH";
+            this.txtTenKH.Size = new System.Drawing.Size(220, 22);
+            this.txtTenKH.TabIndex = 3;
             // 
             // lblDiaChi
             // 
-            lblDiaChi.Location = new Point(10, 70);
-            lblDiaChi.Name = "lblDiaChi";
-            lblDiaChi.Size = new Size(100, 23);
-            lblDiaChi.TabIndex = 4;
-            lblDiaChi.Text = "??a ch?";
+            this.lblDiaChi.Location = new System.Drawing.Point(10, 70);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(100, 23);
+            this.lblDiaChi.TabIndex = 4;
+            this.lblDiaChi.Text = "Địa chỉ";
             // 
             // txtDiaChi
             // 
-            txtDiaChi.Location = new Point(120, 70);
-            txtDiaChi.Name = "txtDiaChi";
-            txtDiaChi.Size = new Size(220, 27);
-            txtDiaChi.TabIndex = 5;
+            this.txtDiaChi.Location = new System.Drawing.Point(120, 70);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(220, 22);
+            this.txtDiaChi.TabIndex = 5;
             // 
             // lblSoDienThoai
             // 
-            lblSoDienThoai.Location = new Point(10, 100);
-            lblSoDienThoai.Name = "lblSoDienThoai";
-            lblSoDienThoai.Size = new Size(100, 23);
-            lblSoDienThoai.TabIndex = 6;
-            lblSoDienThoai.Text = "Số điện thoại";
+            this.lblSoDienThoai.Location = new System.Drawing.Point(10, 100);
+            this.lblSoDienThoai.Name = "lblSoDienThoai";
+            this.lblSoDienThoai.Size = new System.Drawing.Size(100, 23);
+            this.lblSoDienThoai.TabIndex = 6;
+            this.lblSoDienThoai.Text = "Số điện thoại";
             // 
             // txtSoDienThoai
             // 
-            txtSoDienThoai.Location = new Point(120, 100);
-            txtSoDienThoai.Name = "txtSoDienThoai";
-            txtSoDienThoai.Size = new Size(220, 27);
-            txtSoDienThoai.TabIndex = 7;
+            this.txtSoDienThoai.Location = new System.Drawing.Point(120, 100);
+            this.txtSoDienThoai.Name = "txtSoDienThoai";
+            this.txtSoDienThoai.Size = new System.Drawing.Size(220, 22);
+            this.txtSoDienThoai.TabIndex = 7;
             // 
             // lblEmail
             // 
-            lblEmail.Location = new Point(10, 130);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(100, 23);
-            lblEmail.TabIndex = 8;
-            lblEmail.Text = "Email";
+            this.lblEmail.Location = new System.Drawing.Point(10, 130);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(100, 23);
+            this.lblEmail.TabIndex = 8;
+            this.lblEmail.Text = "Email";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(120, 130);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(220, 27);
-            txtEmail.TabIndex = 9;
+            this.txtEmail.Location = new System.Drawing.Point(120, 130);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(220, 22);
+            this.txtEmail.TabIndex = 9;
             // 
             // lblNgayDangKy
             // 
-            lblNgayDangKy.Location = new Point(10, 160);
-            lblNgayDangKy.Name = "lblNgayDangKy";
-            lblNgayDangKy.Size = new Size(100, 23);
-            lblNgayDangKy.TabIndex = 10;
-            lblNgayDangKy.Text = "Ngày đăng ký";
+            this.lblNgayDangKy.Location = new System.Drawing.Point(10, 160);
+            this.lblNgayDangKy.Name = "lblNgayDangKy";
+            this.lblNgayDangKy.Size = new System.Drawing.Size(100, 23);
+            this.lblNgayDangKy.TabIndex = 10;
+            this.lblNgayDangKy.Text = "Ngày đăng ký";
             // 
             // dtpNgayDangKy
             // 
-            dtpNgayDangKy.Location = new Point(120, 160);
-            dtpNgayDangKy.Name = "dtpNgayDangKy";
-            dtpNgayDangKy.Size = new Size(200, 27);
-            dtpNgayDangKy.TabIndex = 11;
+            this.dtpNgayDangKy.Location = new System.Drawing.Point(120, 160);
+            this.dtpNgayDangKy.Name = "dtpNgayDangKy";
+            this.dtpNgayDangKy.Size = new System.Drawing.Size(200, 22);
+            this.dtpNgayDangKy.TabIndex = 11;
             // 
             // btnOK
             // 
-            btnOK.DialogResult = DialogResult.OK;
-            btnOK.Location = new Point(120, 200);
-            btnOK.Name = "btnOK";
-            btnOK.Size = new Size(75, 23);
-            btnOK.TabIndex = 12;
-            btnOK.Text = "OK";
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.Location = new System.Drawing.Point(120, 200);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 12;
+            this.btnOK.Text = "OK";
             // 
             // btnCancel
             // 
-            btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(200, 200);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
-            btnCancel.TabIndex = 13;
-            btnCancel.Text = "Cancel";
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(200, 200);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Cancel";
             // 
             // FormKhachHangEdit
             // 
-            ClientSize = new Size(360, 250);
-            Controls.Add(lblMaKH);
-            Controls.Add(txtMaKH);
-            Controls.Add(lblTenKH);
-            Controls.Add(txtTenKH);
-            Controls.Add(lblDiaChi);
-            Controls.Add(txtDiaChi);
-            Controls.Add(lblSoDienThoai);
-            Controls.Add(txtSoDienThoai);
-            Controls.Add(lblEmail);
-            Controls.Add(txtEmail);
-            Controls.Add(lblNgayDangKy);
-            Controls.Add(dtpNgayDangKy);
-            Controls.Add(btnOK);
-            Controls.Add(btnCancel);
-            Name = "FormKhachHangEdit";
-            StartPosition = FormStartPosition.CenterParent;
-            ResumeLayout(false);
-            PerformLayout();
+            this.ClientSize = new System.Drawing.Size(360, 250);
+            this.Controls.Add(this.lblMaKH);
+            this.Controls.Add(this.txtMaKH);
+            this.Controls.Add(this.lblTenKH);
+            this.Controls.Add(this.txtTenKH);
+            this.Controls.Add(this.lblDiaChi);
+            this.Controls.Add(this.txtDiaChi);
+            this.Controls.Add(this.lblSoDienThoai);
+            this.Controls.Add(this.txtSoDienThoai);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblNgayDangKy);
+            this.Controls.Add(this.dtpNgayDangKy);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancel);
+            this.Name = "FormKhachHangEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
     }
 }
